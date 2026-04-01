@@ -20,8 +20,8 @@ from isaaclab_tasks.utils import PresetCfg
 ##
 # Pre-defined configs
 ##
-from isaaclab_assets import G1_MINIMAL_CFG  # isort: skip
-
+from isaaclab_assets import G1_CFG  # isort: skip
+from GMT.robots.g1 import G1_CYLINDER_CFG
 
 @configclass
 class G1Rewards(RewardsCfg):
@@ -151,7 +151,7 @@ class G1RoughEnvCfg(TrackingEnvCfg):
         # post init of parent
         super().__post_init__()
         # Scene
-        self.scene.robot = G1_MINIMAL_CFG.replace(prim_path="{ENV_REGEX_NS}/Robot")
+        self.scene.robot = G1_CYLINDER_CFG.replace(prim_path="{ENV_REGEX_NS}/Robot")
         self.scene.height_scanner.prim_path = "{ENV_REGEX_NS}/Robot/torso_link"
 
         # Rewards

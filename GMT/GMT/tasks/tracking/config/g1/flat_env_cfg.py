@@ -64,7 +64,24 @@ class G1FlatEnvCfg(G1RoughEnvCfg):
         self.commands.base_velocity.ranges.lin_vel_y = (-0.5, 0.5)
         self.commands.base_velocity.ranges.ang_vel_z = (-1.0, 1.0)
 
-
+        self.commands.motion.motion_file = ""
+        self.commands.motion.reference_body = "torso_link"
+        self.commands.motion.body_names = [
+            "pelvis",
+            "left_hip_yaw_link",
+            "left_knee_link",
+            "left_ankle_roll_link",
+            "right_hip_yaw_link",
+            "right_knee_link",
+            "right_ankle_roll_link",
+            "torso_link",
+            "left_shoulder_yaw_link",
+            "left_elbow_link",
+            "left_wrist_yaw_link",
+            "right_shoulder_yaw_link",
+            "right_elbow_link",
+            "right_wrist_yaw_link",
+        ]
 class G1FlatEnvCfg_PLAY(G1FlatEnvCfg):
     def __post_init__(self) -> None:
         # post init of parent

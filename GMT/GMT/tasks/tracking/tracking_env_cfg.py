@@ -106,6 +106,27 @@ class CommandsCfg:
         ),
     )
 
+    motion = mdp.MotionCommandCfg(
+        asset_name="robot",
+        resampling_time_range=(1.0e9, 1.0e9),
+        debug_vis=True,
+        pose_range={
+            # "x": (-0.0, 0.0),
+            # "y": (-0.0, 0.0),
+            # "z": (-0.0, 0.0),
+            # "roll": (-0., 0.),
+            # "pitch": (-0., 0.),
+            # "yaw": (-0., 0.),
+            "x": (-0.1, 0.1),
+            "z": (-0.0, 0.2),
+            "y": (-0.1, 0.1),
+            "roll": (-0.1, 0.1),
+            "pitch": (-0.1, 0.1),
+            "yaw": (-0.2, 0.2),
+        },
+        joint_position_range=(-0.1, 0.1),
+    )
+
 
 @configclass
 class ActionsCfg:

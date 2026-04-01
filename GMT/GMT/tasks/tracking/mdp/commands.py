@@ -44,6 +44,7 @@ from isaaclab.utils.math import (
     subtract_frame_transforms,
     yaw_quat,
 )
+from .reset_write_helpers import write_reset_state_to_sim_mask
 
 if TYPE_CHECKING:
     from isaaclab.envs import ManagerBasedRLEnv
@@ -1250,19 +1251,14 @@ class MotionCommand(CommandTerm):
             soft_joint_pos_limits[:, :, 1],
         )
 
-        self.robot.write_joint_state_to_sim(
-            joint_pos[env_ids], joint_vel[env_ids], env_ids=env_ids
-        )
-        self.robot.write_root_state_to_sim(
-            torch.cat(
-                [
-                    root_pos[env_ids],
-                    root_ori[env_ids],
-                    root_lin_vel[env_ids],
-                    root_ang_vel[env_ids],
-                ],
-                dim=-1,
-            ),
+        write_reset_state_to_sim_mask(
+            self.robot,
+            joint_pos=joint_pos,
+            joint_vel=joint_vel,
+            root_pos=root_pos,
+            root_ori=root_ori,
+            root_lin_vel=root_lin_vel,
+            root_ang_vel=root_ang_vel,
             env_ids=env_ids,
         )
 
@@ -1372,13 +1368,13 @@ class MotionCommand(CommandTerm):
             + self._env.scene.env_origins
         )
         ref_quat_w = self._motion_body_quat_w_timestep[:, self.motion_ref_body_index]
-
-        robot_body_pos_w = self.robot.data.body_pos_w.clone()
-        robot_body_quat_w = self.robot.data.body_quat_w.clone()
-        robot_body_lin_vel_w = self.robot.data.body_lin_vel_w.clone()
-        robot_body_ang_vel_w = self.robot.data.body_ang_vel_w.clone()
-        robot_joint_pos = self.robot.data.joint_pos.clone()
-        robot_joint_vel = self.robot.data.joint_vel.clone()
+        # TODO: check if not need clone when convert to torch
+        robot_body_pos_w = wp.to_torch(self.robot.data.body_pos_w).clone()
+        robot_body_quat_w = wp.to_torch(self.robot.data.body_quat_w).clone()
+        robot_body_lin_vel_w = wp.to_torch(self.robot.data.body_lin_vel_w).clone()
+        robot_body_ang_vel_w = wp.to_torch(self.robot.data.body_ang_vel_w).clone()
+        robot_joint_pos = wp.to_torch(self.robot.data.joint_pos).clone()
+        robot_joint_vel = wp.to_torch(self.robot.data.joint_vel).clone()
 
         robot_ref_pos_w = robot_body_pos_w[:, self.robot_ref_body_index]
         robot_ref_quat_w = robot_body_quat_w[:, self.robot_ref_body_index]
