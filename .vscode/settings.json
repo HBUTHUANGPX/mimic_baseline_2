@@ -1,0 +1,14 @@
+{
+    "python.analysis.extraPaths": [
+        "./rsl_rl",
+        "./IsaacLab/source/isaaclab",
+        "./IsaacLab/source/isaaclab_rl",
+        "./IsaacLab/source/isaaclab_tasks",
+        "./IsaacLab/source/isaaclab_tasks_experimental",
+        "./IsaacLab/source/isaaclab_newton",
+        "./IsaacLab/source/isaaclab_physx",
+        "./GMT",
+        "./IsaacLab/source/isaaclab_assets"
+    ],
+    "esbonio.preview.synchronizeScroll": "bothWays"
+}
