@@ -1,0 +1,52 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "URDF USD Converter v0.1.0"
+    }
+    defaultPrim = "g1_29dof_mode_15"
+    doc = """Generated from Composed Stage of root layer /tmp/tmppzcx9bs4/g1_29dof_mode_15.usdc
+
+
+Generated from Composed Stage of root layer /home/hpx/HPX_LOCO_2/mimic_baseline_2/GMT/GMT/assets/unitree_g1/usdex/g1_29dof_mode_15.usdc
+
+
+Generated from Composed Stage of root layer /home/hpx/HPX_LOCO_2/mimic_baseline_2/GMT/GMT/assets/unitree_g1/temp/g1_29dof_mode_15.usd
+
+
+Generated from Composed Stage of root layer /home/hpx/HPX_LOCO_2/mimic_baseline_2/GMT/GMT/assets/unitree_g1/g1_29dof_mode_15/payloads/base.usd
+"""
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def Xform "g1_29dof_mode_15" (
+    prepend references = @./payloads/base.usda@
+    variants = {
+        string Physics = "physx"
+    }
+    append variantSets = "Physics"
+)
+{
+    variantSet "Physics" = {
+        "mujoco" (
+            prepend payload = @./payloads/Physics/mujoco.usda@
+        ) {
+
+        }
+        "none" {
+
+        }
+        "physics" (
+            prepend payload = @./payloads/Physics/physics.usda@
+        ) {
+
+        }
+        "physx" (
+            prepend payload = @./payloads/Physics/physx.usda@
+        ) {
+
+        }
+    }
+}
+
