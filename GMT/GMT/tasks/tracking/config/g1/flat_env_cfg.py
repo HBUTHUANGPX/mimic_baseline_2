@@ -20,7 +20,7 @@ class PhysicsCfg(PresetCfg):
     default = PhysxCfg(gpu_max_rigid_patch_count=10 * 2**15)
     newton = NewtonCfg(
         solver_cfg=MJWarpSolverCfg(
-            njmax=95,
+            njmax=150,
             nconmax=10,
             cone="pyramidal",
             impratio=1,

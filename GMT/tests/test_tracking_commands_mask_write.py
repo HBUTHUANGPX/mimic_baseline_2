@@ -1,7 +1,9 @@
 from __future__ import annotations
 
+import ast
 import importlib.util
 from pathlib import Path
+import textwrap
 
 import torch
 
@@ -20,6 +22,16 @@ _SPEC.loader.exec_module(_MODULE)
 
 build_env_mask = _MODULE.build_env_mask
 write_reset_state_to_sim_mask = _MODULE.write_reset_state_to_sim_mask
+_NEWTON_ARTICULATION_PATH = (
+    Path(__file__).resolve().parents[2]
+    / "IsaacLab"
+    / "source"
+    / "isaaclab_newton"
+    / "isaaclab_newton"
+    / "assets"
+    / "articulation"
+    / "articulation.py"
+)
 
 
 class _FakeRobot:
@@ -41,6 +53,28 @@ class _FakeRobot:
         self, *, root_velocity: torch.Tensor, env_mask: torch.Tensor
     ) -> None:
         self.calls.append(("root_velocity", root_velocity.clone(), env_mask.clone()))
+
+
+def _load_newton_write_joint_state_to_sim_mask():
+    source = _NEWTON_ARTICULATION_PATH.read_text()
+    module = ast.parse(source)
+    for node in module.body:
+        if isinstance(node, ast.ClassDef) and node.name == "Articulation":
+            for item in node.body:
+                if (
+                    isinstance(item, ast.FunctionDef)
+                    and item.name == "write_joint_state_to_sim_mask"
+                ):
+                    method_source = ast.get_source_segment(source, item)
+                    namespace: dict[str, object] = {}
+                    exec(
+                        "from __future__ import annotations\n"
+                        "class ExtractedArticulation:\n"
+                        f"{textwrap.indent(method_source, '    ')}\n",
+                        namespace,
+                    )
+                    return namespace["ExtractedArticulation"].write_joint_state_to_sim_mask
+    raise AssertionError("Could not locate Newton write_joint_state_to_sim_mask")
 
 
 def test_build_env_mask_marks_only_selected_envs() -> None:
@@ -83,3 +117,54 @@ def test_write_reset_state_to_sim_mask_uses_full_buffers_and_env_mask() -> None:
     assert torch.equal(robot.calls[1][2], expected_mask)
     assert torch.equal(robot.calls[2][1], torch.cat([root_lin_vel, root_ang_vel], dim=-1))
     assert torch.equal(robot.calls[2][2], expected_mask)
+
+
+def test_newton_write_joint_state_to_sim_mask_forwards_keyword_only_args() -> None:
+    method = _load_newton_write_joint_state_to_sim_mask()
+
+    class _KeywordOnlyRobot:
+        def __init__(self) -> None:
+            self.position_call: tuple[torch.Tensor, torch.Tensor, torch.Tensor] | None = None
+            self.velocity_call: tuple[torch.Tensor, torch.Tensor, torch.Tensor] | None = None
+
+        write_joint_state_to_sim_mask = method
+
+        def write_joint_position_to_sim_mask(
+            self,
+            *,
+            position: torch.Tensor,
+            env_mask: torch.Tensor,
+            joint_mask: torch.Tensor,
+        ) -> None:
+            self.position_call = (position.clone(), env_mask.clone(), joint_mask.clone())
+
+        def write_joint_velocity_to_sim_mask(
+            self,
+            *,
+            velocity: torch.Tensor,
+            env_mask: torch.Tensor,
+            joint_mask: torch.Tensor,
+        ) -> None:
+            self.velocity_call = (velocity.clone(), env_mask.clone(), joint_mask.clone())
+
+    robot = _KeywordOnlyRobot()
+    position = torch.tensor([[1.0, 2.0]])
+    velocity = torch.tensor([[0.1, 0.2]])
+    env_mask = torch.tensor([True])
+    joint_mask = torch.tensor([True, False])
+
+    robot.write_joint_state_to_sim_mask(
+        position=position,
+        velocity=velocity,
+        env_mask=env_mask,
+        joint_mask=joint_mask,
+    )
+
+    assert robot.position_call is not None
+    assert robot.velocity_call is not None
+    assert torch.equal(robot.position_call[0], position)
+    assert torch.equal(robot.position_call[1], env_mask)
+    assert torch.equal(robot.position_call[2], joint_mask)
+    assert torch.equal(robot.velocity_call[0], velocity)
+    assert torch.equal(robot.velocity_call[1], env_mask)
+    assert torch.equal(robot.velocity_call[2], joint_mask)
