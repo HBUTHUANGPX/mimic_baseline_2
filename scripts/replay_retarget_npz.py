@@ -41,16 +41,6 @@ args_cli, _ = parser.parse_known_args()
 app_launcher = AppLauncher(args_cli)
 simulation_app = app_launcher.app
 
-
-def prepare_robot_cfg(robot_cfg):
-    prepared = robot_cfg.copy()
-    if hasattr(prepared, "spawn") and hasattr(
-        prepared.spawn, "activate_contact_sensors"
-    ):
-        prepared.spawn.activate_contact_sensors = False
-    return prepared
-
-
 import torch
 import warp as wp
 import isaaclab.sim as sim_utils
@@ -59,13 +49,19 @@ from isaaclab.scene import InteractiveScene, InteractiveSceneCfg
 from isaaclab.sim import SimulationContext
 from isaaclab.utils import configclass
 from isaaclab.utils.assets import ISAAC_NUCLEUS_DIR
+from isaaclab_newton.sensors import ContactSensorCfg as NewtonContactSensorCfg
+from isaaclab_physx.sensors import ContactSensorCfg as PhysXContactSensorCfg
+from isaaclab_tasks.utils import PresetCfg
 
 if args_cli.robot == "Q1":
     from GMT.robots.q1 import Q1_CYLINDER_CFG as ROBOT_CFG
 else:
     from GMT.robots.g1 import G1_CYLINDER_CFG as ROBOT_CFG
-ROBOT_CFG = prepare_robot_cfg(ROBOT_CFG)
-
+@configclass
+class EnvContactSensorCfg(PresetCfg):
+    default = PhysXContactSensorCfg(prim_path="{ENV_REGEX_NS}/Robot/.*", history_length=3, track_air_time=True)
+    newton = NewtonContactSensorCfg(prim_path="{ENV_REGEX_NS}/Robot/.*", history_length=3, track_air_time=True)
+    physx = default
 
 @configclass
 class ReplaySceneCfg(InteractiveSceneCfg):
@@ -80,9 +76,8 @@ class ReplaySceneCfg(InteractiveSceneCfg):
             texture_file=f"{ISAAC_NUCLEUS_DIR}/Materials/Textures/Skies/PolyHaven/kloofendal_43d_clear_puresky_4k.hdr",
         ),
     )
+    contact_forces = EnvContactSensorCfg()
     robot: ArticulationCfg = ROBOT_CFG.replace(prim_path="{ENV_REGEX_NS}/Robot")
-
-
 @dataclass
 class RetargetMotion:
     fps: float
