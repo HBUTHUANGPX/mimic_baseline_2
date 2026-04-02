@@ -31,232 +31,203 @@ over "g1_29dof_mode_15"
         {
             uniform double mjc:forceRange:max = 139
             uniform double mjc:forceRange:min = -139
-            custom rel mjc:target
-            prepend rel mjc:target = </g1_29dof_mode_15/Physics/left_hip_pitch_joint>
+            custom rel mjc:target = </g1_29dof_mode_15/Physics/left_hip_pitch_joint>
         }
 
         def MjcActuator "left_hip_roll_joint_actuator"
         {
             uniform double mjc:forceRange:max = 139
             uniform double mjc:forceRange:min = -139
-            custom rel mjc:target
-            prepend rel mjc:target = </g1_29dof_mode_15/Physics/left_hip_roll_joint>
+            custom rel mjc:target = </g1_29dof_mode_15/Physics/left_hip_roll_joint>
         }
 
         def MjcActuator "left_hip_yaw_joint_actuator"
         {
             uniform double mjc:forceRange:max = 88
             uniform double mjc:forceRange:min = -88
-            custom rel mjc:target
-            prepend rel mjc:target = </g1_29dof_mode_15/Physics/left_hip_yaw_joint>
+            custom rel mjc:target = </g1_29dof_mode_15/Physics/left_hip_yaw_joint>
         }
 
         def MjcActuator "left_knee_joint_actuator"
         {
             uniform double mjc:forceRange:max = 139
             uniform double mjc:forceRange:min = -139
-            custom rel mjc:target
-            prepend rel mjc:target = </g1_29dof_mode_15/Physics/left_knee_joint>
+            custom rel mjc:target = </g1_29dof_mode_15/Physics/left_knee_joint>
         }
 
         def MjcActuator "left_ankle_pitch_joint_actuator"
         {
             uniform double mjc:forceRange:max = 35
             uniform double mjc:forceRange:min = -35
-            custom rel mjc:target
-            prepend rel mjc:target = </g1_29dof_mode_15/Physics/left_ankle_pitch_joint>
+            custom rel mjc:target = </g1_29dof_mode_15/Physics/left_ankle_pitch_joint>
         }
 
         def MjcActuator "left_ankle_roll_joint_actuator"
         {
             uniform double mjc:forceRange:max = 35
             uniform double mjc:forceRange:min = -35
-            custom rel mjc:target
-            prepend rel mjc:target = </g1_29dof_mode_15/Physics/left_ankle_roll_joint>
+            custom rel mjc:target = </g1_29dof_mode_15/Physics/left_ankle_roll_joint>
         }
 
         def MjcActuator "right_hip_pitch_joint_actuator"
         {
             uniform double mjc:forceRange:max = 139
             uniform double mjc:forceRange:min = -139
-            custom rel mjc:target
-            prepend rel mjc:target = </g1_29dof_mode_15/Physics/right_hip_pitch_joint>
+            custom rel mjc:target = </g1_29dof_mode_15/Physics/right_hip_pitch_joint>
         }
 
         def MjcActuator "right_hip_roll_joint_actuator"
         {
             uniform double mjc:forceRange:max = 139
             uniform double mjc:forceRange:min = -139
-            custom rel mjc:target
-            prepend rel mjc:target = </g1_29dof_mode_15/Physics/right_hip_roll_joint>
+            custom rel mjc:target = </g1_29dof_mode_15/Physics/right_hip_roll_joint>
         }
 
         def MjcActuator "right_hip_yaw_joint_actuator"
         {
             uniform double mjc:forceRange:max = 88
             uniform double mjc:forceRange:min = -88
-            custom rel mjc:target
-            prepend rel mjc:target = </g1_29dof_mode_15/Physics/right_hip_yaw_joint>
+            custom rel mjc:target = </g1_29dof_mode_15/Physics/right_hip_yaw_joint>
         }
 
         def MjcActuator "right_knee_joint_actuator"
         {
             uniform double mjc:forceRange:max = 139
             uniform double mjc:forceRange:min = -139
-            custom rel mjc:target
-            prepend rel mjc:target = </g1_29dof_mode_15/Physics/right_knee_joint>
+            custom rel mjc:target = </g1_29dof_mode_15/Physics/right_knee_joint>
         }
 
         def MjcActuator "right_ankle_pitch_joint_actuator"
         {
             uniform double mjc:forceRange:max = 35
             uniform double mjc:forceRange:min = -35
-            custom rel mjc:target
-            prepend rel mjc:target = </g1_29dof_mode_15/Physics/right_ankle_pitch_joint>
+            custom rel mjc:target = </g1_29dof_mode_15/Physics/right_ankle_pitch_joint>
         }
 
         def MjcActuator "right_ankle_roll_joint_actuator"
         {
             uniform double mjc:forceRange:max = 35
             uniform double mjc:forceRange:min = -35
-            custom rel mjc:target
-            prepend rel mjc:target = </g1_29dof_mode_15/Physics/right_ankle_roll_joint>
+            custom rel mjc:target = </g1_29dof_mode_15/Physics/right_ankle_roll_joint>
         }
 
         def MjcActuator "waist_yaw_joint_actuator"
         {
             uniform double mjc:forceRange:max = 88
             uniform double mjc:forceRange:min = -88
-            custom rel mjc:target
-            prepend rel mjc:target = </g1_29dof_mode_15/Physics/waist_yaw_joint>
+            custom rel mjc:target = </g1_29dof_mode_15/Physics/waist_yaw_joint>
         }
 
         def MjcActuator "waist_roll_joint_actuator"
         {
             uniform double mjc:forceRange:max = 35
             uniform double mjc:forceRange:min = -35
-            custom rel mjc:target
-            prepend rel mjc:target = </g1_29dof_mode_15/Physics/waist_roll_joint>
+            custom rel mjc:target = </g1_29dof_mode_15/Physics/waist_roll_joint>
         }
 
         def MjcActuator "waist_pitch_joint_actuator"
         {
             uniform double mjc:forceRange:max = 35
             uniform double mjc:forceRange:min = -35
-            custom rel mjc:target
-            prepend rel mjc:target = </g1_29dof_mode_15/Physics/waist_pitch_joint>
+            custom rel mjc:target = </g1_29dof_mode_15/Physics/waist_pitch_joint>
         }
 
         def MjcActuator "left_shoulder_pitch_joint_actuator"
         {
             uniform double mjc:forceRange:max = 25
             uniform double mjc:forceRange:min = -25
-            custom rel mjc:target
-            prepend rel mjc:target = </g1_29dof_mode_15/Physics/left_shoulder_pitch_joint>
+            custom rel mjc:target = </g1_29dof_mode_15/Physics/left_shoulder_pitch_joint>
         }
 
         def MjcActuator "left_shoulder_roll_joint_actuator"
         {
             uniform double mjc:forceRange:max = 25
             uniform double mjc:forceRange:min = -25
-            custom rel mjc:target
-            prepend rel mjc:target = </g1_29dof_mode_15/Physics/left_shoulder_roll_joint>
+            custom rel mjc:target = </g1_29dof_mode_15/Physics/left_shoulder_roll_joint>
         }
 
         def MjcActuator "left_shoulder_yaw_joint_actuator"
         {
             uniform double mjc:forceRange:max = 25
             uniform double mjc:forceRange:min = -25
-            custom rel mjc:target
-            prepend rel mjc:target = </g1_29dof_mode_15/Physics/left_shoulder_yaw_joint>
+            custom rel mjc:target = </g1_29dof_mode_15/Physics/left_shoulder_yaw_joint>
         }
 
         def MjcActuator "left_elbow_joint_actuator"
         {
             uniform double mjc:forceRange:max = 25
             uniform double mjc:forceRange:min = -25
-            custom rel mjc:target
-            prepend rel mjc:target = </g1_29dof_mode_15/Physics/left_elbow_joint>
+            custom rel mjc:target = </g1_29dof_mode_15/Physics/left_elbow_joint>
         }
 
         def MjcActuator "left_wrist_roll_joint_actuator"
         {
             uniform double mjc:forceRange:max = 25
             uniform double mjc:forceRange:min = -25
-            custom rel mjc:target
-            prepend rel mjc:target = </g1_29dof_mode_15/Physics/left_wrist_roll_joint>
+            custom rel mjc:target = </g1_29dof_mode_15/Physics/left_wrist_roll_joint>
         }
 
         def MjcActuator "left_wrist_pitch_joint_actuator"
         {
             uniform double mjc:forceRange:max = 13.399999618530273
             uniform double mjc:forceRange:min = -13.399999618530273
-            custom rel mjc:target
-            prepend rel mjc:target = </g1_29dof_mode_15/Physics/left_wrist_pitch_joint>
+            custom rel mjc:target = </g1_29dof_mode_15/Physics/left_wrist_pitch_joint>
         }
 
         def MjcActuator "left_wrist_yaw_joint_actuator"
         {
             uniform double mjc:forceRange:max = 13.399999618530273
             uniform double mjc:forceRange:min = -13.399999618530273
-            custom rel mjc:target
-            prepend rel mjc:target = </g1_29dof_mode_15/Physics/left_wrist_yaw_joint>
+            custom rel mjc:target = </g1_29dof_mode_15/Physics/left_wrist_yaw_joint>
         }
 
         def MjcActuator "right_shoulder_pitch_joint_actuator"
         {
             uniform double mjc:forceRange:max = 25
             uniform double mjc:forceRange:min = -25
-            custom rel mjc:target
-            prepend rel mjc:target = </g1_29dof_mode_15/Physics/right_shoulder_pitch_joint>
+            custom rel mjc:target = </g1_29dof_mode_15/Physics/right_shoulder_pitch_joint>
         }
 
         def MjcActuator "right_shoulder_roll_joint_actuator"
         {
             uniform double mjc:forceRange:max = 25
             uniform double mjc:forceRange:min = -25
-            custom rel mjc:target
-            prepend rel mjc:target = </g1_29dof_mode_15/Physics/right_shoulder_roll_joint>
+            custom rel mjc:target = </g1_29dof_mode_15/Physics/right_shoulder_roll_joint>
         }
 
         def MjcActuator "right_shoulder_yaw_joint_actuator"
         {
             uniform double mjc:forceRange:max = 25
             uniform double mjc:forceRange:min = -25
-            custom rel mjc:target
-            prepend rel mjc:target = </g1_29dof_mode_15/Physics/right_shoulder_yaw_joint>
+            custom rel mjc:target = </g1_29dof_mode_15/Physics/right_shoulder_yaw_joint>
         }
 
         def MjcActuator "right_elbow_joint_actuator"
         {
             uniform double mjc:forceRange:max = 25
             uniform double mjc:forceRange:min = -25
-            custom rel mjc:target
-            prepend rel mjc:target = </g1_29dof_mode_15/Physics/right_elbow_joint>
+            custom rel mjc:target = </g1_29dof_mode_15/Physics/right_elbow_joint>
         }
 
         def MjcActuator "right_wrist_roll_joint_actuator"
         {
             uniform double mjc:forceRange:max = 25
             uniform double mjc:forceRange:min = -25
-            custom rel mjc:target
-            prepend rel mjc:target = </g1_29dof_mode_15/Physics/right_wrist_roll_joint>
+            custom rel mjc:target = </g1_29dof_mode_15/Physics/right_wrist_roll_joint>
         }
 
         def MjcActuator "right_wrist_pitch_joint_actuator"
         {
             uniform double mjc:forceRange:max = 13.399999618530273
             uniform double mjc:forceRange:min = -13.399999618530273
-            custom rel mjc:target
-            prepend rel mjc:target = </g1_29dof_mode_15/Physics/right_wrist_pitch_joint>
+            custom rel mjc:target = </g1_29dof_mode_15/Physics/right_wrist_pitch_joint>
         }
 
         def MjcActuator "right_wrist_yaw_joint_actuator"
         {
             uniform double mjc:forceRange:max = 13.399999618530273
             uniform double mjc:forceRange:min = -13.399999618530273
-            custom rel mjc:target
-            prepend rel mjc:target = </g1_29dof_mode_15/Physics/right_wrist_yaw_joint>
+            custom rel mjc:target = </g1_29dof_mode_15/Physics/right_wrist_yaw_joint>
         }
 
         over "left_hip_pitch_joint" (

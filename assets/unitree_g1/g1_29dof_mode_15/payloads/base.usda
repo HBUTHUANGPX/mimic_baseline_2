@@ -4,16 +4,16 @@
         string creator = "URDF USD Converter v0.1.0"
     }
     defaultPrim = "g1_29dof_mode_15"
-    doc = """Generated from Composed Stage of root layer /tmp/tmppzcx9bs4/g1_29dof_mode_15.usdc
+    doc = """Generated from Composed Stage of root layer /tmp/tmpfqxmreuw/g1_29dof_mode_15.usdc
 
 
-Generated from Composed Stage of root layer /home/hpx/HPX_LOCO_2/mimic_baseline_2/GMT/GMT/assets/unitree_g1/usdex/g1_29dof_mode_15.usdc
+Generated from Composed Stage of root layer /home/hpx/HPX_LOCO_2/mimic_baseline_2/assets/unitree_g1/usdex/g1_29dof_mode_15.usdc
 
 
-Generated from Composed Stage of root layer /home/hpx/HPX_LOCO_2/mimic_baseline_2/GMT/GMT/assets/unitree_g1/temp/g1_29dof_mode_15.usd
+Generated from Composed Stage of root layer /home/hpx/HPX_LOCO_2/mimic_baseline_2/assets/unitree_g1/temp/g1_29dof_mode_15.usd
 
 
-Generated from Composed Stage of root layer /home/hpx/HPX_LOCO_2/mimic_baseline_2/GMT/GMT/assets/unitree_g1/g1_29dof_mode_15/payloads/base.usd
+Generated from Composed Stage of root layer /home/hpx/HPX_LOCO_2/mimic_baseline_2/assets/unitree_g1/g1_29dof_mode_15/payloads/base.usd
 """
     kilogramsPerUnit = 1
     metersPerUnit = 1
@@ -43,7 +43,7 @@ def Xform "g1_29dof_mode_15" (
         {
             def Xform "pelvis" (
                 instanceable = true
-                prepend references = @./instances.usda@</Instances/pelvis>
+                prepend references = @./instances.usda@</Instances/pelvis_1>
             )
             {
                 quatd xformOp:orient = (1, 0, 0, 0)
@@ -61,7 +61,7 @@ def Xform "g1_29dof_mode_15" (
 
                 def Xform "pelvis_contour_link" (
                     instanceable = true
-                    prepend references = @./instances.usda@</Instances/pelvis_contour_link>
+                    prepend references = @./instances.usda@</Instances/pelvis_contour_link_1>
                 )
                 {
                     quatd xformOp:orient = (1, 0, 0, 0)
@@ -73,7 +73,7 @@ def Xform "g1_29dof_mode_15" (
                 def Xform "pelvis_contour_link_1" (
                     displayName = "pelvis_contour_link"
                     instanceable = true
-                    prepend references = @./instances.usda@</Instances/pelvis_contour_link_1>
+                    prepend references = @./instances.usda@</Instances/pelvis_contour_link_1_1>
                 )
                 {
                     quatd xformOp:orient = (1, 0, 0, 0)
@@ -92,7 +92,7 @@ def Xform "g1_29dof_mode_15" (
 
                 def Xform "left_hip_pitch_link" (
                     instanceable = true
-                    prepend references = @./instances.usda@</Instances/left_hip_pitch_link>
+                    prepend references = @./instances.usda@</Instances/left_hip_pitch_link_1>
                 )
                 {
                     quatd xformOp:orient = (1, 0, 0, 0)
@@ -110,7 +110,7 @@ def Xform "g1_29dof_mode_15" (
 
                     def Xform "left_hip_roll_link" (
                         instanceable = true
-                        prepend references = @./instances.usda@</Instances/left_hip_roll_link>
+                        prepend references = @./instances.usda@</Instances/left_hip_roll_link_1>
                     )
                     {
                         quatd xformOp:orient = (1, 0, 0, 0)
@@ -128,7 +128,7 @@ def Xform "g1_29dof_mode_15" (
 
                         def Xform "left_hip_yaw_link" (
                             instanceable = true
-                            prepend references = @./instances.usda@</Instances/left_hip_yaw_link>
+                            prepend references = @./instances.usda@</Instances/left_hip_yaw_link_1>
                         )
                         {
                             quatd xformOp:orient = (1, 0, 0, 0)
@@ -146,7 +146,7 @@ def Xform "g1_29dof_mode_15" (
 
                             def Xform "left_knee_link" (
                                 instanceable = true
-                                prepend references = @./instances.usda@</Instances/left_knee_link>
+                                prepend references = @./instances.usda@</Instances/left_knee_link_1>
                             )
                             {
                                 quatd xformOp:orient = (1, 0, 0, 0)
@@ -164,7 +164,7 @@ def Xform "g1_29dof_mode_15" (
 
                                 def Xform "left_ankle_pitch_link" (
                                     instanceable = true
-                                    prepend references = @./instances.usda@</Instances/left_ankle_pitch_link>
+                                    prepend references = @./instances.usda@</Instances/left_ankle_pitch_link_1>
                                 )
                                 {
                                     quatd xformOp:orient = (1, 0, 0, 0)
@@ -182,7 +182,7 @@ def Xform "g1_29dof_mode_15" (
 
                                     def Xform "left_ankle_roll_link" (
                                         instanceable = true
-                                        prepend references = @./instances.usda@</Instances/left_ankle_roll_link>
+                                        prepend references = @./instances.usda@</Instances/left_ankle_roll_link_1>
                                     )
                                     {
                                         quatd xformOp:orient = (1, 0, 0, 0)
@@ -250,7 +250,7 @@ def Xform "g1_29dof_mode_15" (
                                 def Xform "left_ankle_pitch_link_1" (
                                     displayName = "left_ankle_pitch_link"
                                     instanceable = true
-                                    prepend references = @./instances.usda@</Instances/left_ankle_pitch_link_1>
+                                    prepend references = @./instances.usda@</Instances/left_ankle_pitch_link_1_1>
                                 )
                                 {
                                     quatd xformOp:orient = (1, 0, 0, 0)
@@ -263,7 +263,7 @@ def Xform "g1_29dof_mode_15" (
                             def Xform "left_knee_link_1" (
                                 displayName = "left_knee_link"
                                 instanceable = true
-                                prepend references = @./instances.usda@</Instances/left_knee_link_1>
+                                prepend references = @./instances.usda@</Instances/left_knee_link_1_1>
                             )
                             {
                                 quatd xformOp:orient = (1, 0, 0, 0)
@@ -276,7 +276,7 @@ def Xform "g1_29dof_mode_15" (
                         def Xform "left_hip_yaw_link_1" (
                             displayName = "left_hip_yaw_link"
                             instanceable = true
-                            prepend references = @./instances.usda@</Instances/left_hip_yaw_link_1>
+                            prepend references = @./instances.usda@</Instances/left_hip_yaw_link_1_1>
                         )
                         {
                             quatd xformOp:orient = (1, 0, 0, 0)
@@ -289,7 +289,7 @@ def Xform "g1_29dof_mode_15" (
                     def Xform "left_hip_roll_link_1" (
                         displayName = "left_hip_roll_link"
                         instanceable = true
-                        prepend references = @./instances.usda@</Instances/left_hip_roll_link_1>
+                        prepend references = @./instances.usda@</Instances/left_hip_roll_link_1_1>
                     )
                     {
                         quatd xformOp:orient = (1, 0, 0, 0)
@@ -302,7 +302,7 @@ def Xform "g1_29dof_mode_15" (
                 def Xform "left_hip_pitch_link_1" (
                     displayName = "left_hip_pitch_link"
                     instanceable = true
-                    prepend references = @./instances.usda@</Instances/left_hip_pitch_link_1>
+                    prepend references = @./instances.usda@</Instances/left_hip_pitch_link_1_1>
                 )
                 {
                     quatd xformOp:orient = (1, 0, 0, 0)
@@ -321,7 +321,7 @@ def Xform "g1_29dof_mode_15" (
 
                 def Xform "right_hip_pitch_link" (
                     instanceable = true
-                    prepend references = @./instances.usda@</Instances/right_hip_pitch_link>
+                    prepend references = @./instances.usda@</Instances/right_hip_pitch_link_1>
                 )
                 {
                     quatd xformOp:orient = (1, 0, 0, 0)
@@ -339,7 +339,7 @@ def Xform "g1_29dof_mode_15" (
 
                     def Xform "right_hip_roll_link" (
                         instanceable = true
-                        prepend references = @./instances.usda@</Instances/right_hip_roll_link>
+                        prepend references = @./instances.usda@</Instances/right_hip_roll_link_1>
                     )
                     {
                         quatd xformOp:orient = (1, 0, 0, 0)
@@ -357,7 +357,7 @@ def Xform "g1_29dof_mode_15" (
 
                         def Xform "right_hip_yaw_link" (
                             instanceable = true
-                            prepend references = @./instances.usda@</Instances/right_hip_yaw_link>
+                            prepend references = @./instances.usda@</Instances/right_hip_yaw_link_1>
                         )
                         {
                             quatd xformOp:orient = (1, 0, 0, 0)
@@ -375,7 +375,7 @@ def Xform "g1_29dof_mode_15" (
 
                             def Xform "right_knee_link" (
                                 instanceable = true
-                                prepend references = @./instances.usda@</Instances/right_knee_link>
+                                prepend references = @./instances.usda@</Instances/right_knee_link_1>
                             )
                             {
                                 quatd xformOp:orient = (1, 0, 0, 0)
@@ -393,7 +393,7 @@ def Xform "g1_29dof_mode_15" (
 
                                 def Xform "right_ankle_pitch_link" (
                                     instanceable = true
-                                    prepend references = @./instances.usda@</Instances/right_ankle_pitch_link>
+                                    prepend references = @./instances.usda@</Instances/right_ankle_pitch_link_1>
                                 )
                                 {
                                     quatd xformOp:orient = (1, 0, 0, 0)
@@ -411,7 +411,7 @@ def Xform "g1_29dof_mode_15" (
 
                                     def Xform "right_ankle_roll_link" (
                                         instanceable = true
-                                        prepend references = @./instances.usda@</Instances/right_ankle_roll_link>
+                                        prepend references = @./instances.usda@</Instances/right_ankle_roll_link_1>
                                     )
                                     {
                                         quatd xformOp:orient = (1, 0, 0, 0)
@@ -479,7 +479,7 @@ def Xform "g1_29dof_mode_15" (
                                 def Xform "right_ankle_pitch_link_1" (
                                     displayName = "right_ankle_pitch_link"
                                     instanceable = true
-                                    prepend references = @./instances.usda@</Instances/right_ankle_pitch_link_1>
+                                    prepend references = @./instances.usda@</Instances/right_ankle_pitch_link_1_1>
                                 )
                                 {
                                     quatd xformOp:orient = (1, 0, 0, 0)
@@ -492,7 +492,7 @@ def Xform "g1_29dof_mode_15" (
                             def Xform "right_knee_link_1" (
                                 displayName = "right_knee_link"
                                 instanceable = true
-                                prepend references = @./instances.usda@</Instances/right_knee_link_1>
+                                prepend references = @./instances.usda@</Instances/right_knee_link_1_1>
                             )
                             {
                                 quatd xformOp:orient = (1, 0, 0, 0)
@@ -505,7 +505,7 @@ def Xform "g1_29dof_mode_15" (
                         def Xform "right_hip_yaw_link_1" (
                             displayName = "right_hip_yaw_link"
                             instanceable = true
-                            prepend references = @./instances.usda@</Instances/right_hip_yaw_link_1>
+                            prepend references = @./instances.usda@</Instances/right_hip_yaw_link_1_1>
                         )
                         {
                             quatd xformOp:orient = (1, 0, 0, 0)
@@ -518,7 +518,7 @@ def Xform "g1_29dof_mode_15" (
                     def Xform "right_hip_roll_link_1" (
                         displayName = "right_hip_roll_link"
                         instanceable = true
-                        prepend references = @./instances.usda@</Instances/right_hip_roll_link_1>
+                        prepend references = @./instances.usda@</Instances/right_hip_roll_link_1_1>
                     )
                     {
                         quatd xformOp:orient = (1, 0, 0, 0)
@@ -531,7 +531,7 @@ def Xform "g1_29dof_mode_15" (
                 def Xform "right_hip_pitch_link_1" (
                     displayName = "right_hip_pitch_link"
                     instanceable = true
-                    prepend references = @./instances.usda@</Instances/right_hip_pitch_link_1>
+                    prepend references = @./instances.usda@</Instances/right_hip_pitch_link_1_1>
                 )
                 {
                     quatd xformOp:orient = (1, 0, 0, 0)
@@ -550,7 +550,7 @@ def Xform "g1_29dof_mode_15" (
 
                 def Xform "waist_yaw_link_rev_1_0" (
                     instanceable = true
-                    prepend references = @./instances.usda@</Instances/waist_yaw_link_rev_1_0>
+                    prepend references = @./instances.usda@</Instances/waist_yaw_link_rev_1_0_1>
                 )
                 {
                     quatd xformOp:orient = (1, 0, 0, 0)
@@ -568,7 +568,7 @@ def Xform "g1_29dof_mode_15" (
 
                     def Xform "waist_roll_link_rev_1_0" (
                         instanceable = true
-                        prepend references = @./instances.usda@</Instances/waist_roll_link_rev_1_0>
+                        prepend references = @./instances.usda@</Instances/waist_roll_link_rev_1_0_1>
                     )
                     {
                         quatd xformOp:orient = (1, 0, 0, 0)
@@ -586,7 +586,7 @@ def Xform "g1_29dof_mode_15" (
 
                         def Xform "torso_link_rev_1_0" (
                             instanceable = true
-                            prepend references = @./instances.usda@</Instances/torso_link_rev_1_0>
+                            prepend references = @./instances.usda@</Instances/torso_link_rev_1_0_1>
                         )
                         {
                             quatd xformOp:orient = (1, 0, 0, 0)
@@ -604,7 +604,7 @@ def Xform "g1_29dof_mode_15" (
 
                             def Xform "logo_link" (
                                 instanceable = true
-                                prepend references = @./instances.usda@</Instances/logo_link>
+                                prepend references = @./instances.usda@</Instances/logo_link_1>
                             )
                             {
                                 quatd xformOp:orient = (1, 0, 0, 0)
@@ -616,7 +616,7 @@ def Xform "g1_29dof_mode_15" (
                             def Xform "logo_link_1" (
                                 displayName = "logo_link"
                                 instanceable = true
-                                prepend references = @./instances.usda@</Instances/logo_link_1>
+                                prepend references = @./instances.usda@</Instances/logo_link_1_1>
                             )
                             {
                                 quatd xformOp:orient = (1, 0, 0, 0)
@@ -635,7 +635,7 @@ def Xform "g1_29dof_mode_15" (
 
                             def Xform "head_link" (
                                 instanceable = true
-                                prepend references = @./instances.usda@</Instances/head_link>
+                                prepend references = @./instances.usda@</Instances/head_link_1>
                             )
                             {
                                 quatd xformOp:orient = (1, 0, 0, 0)
@@ -647,7 +647,7 @@ def Xform "g1_29dof_mode_15" (
                             def Xform "head_link_1" (
                                 displayName = "head_link"
                                 instanceable = true
-                                prepend references = @./instances.usda@</Instances/head_link_1>
+                                prepend references = @./instances.usda@</Instances/head_link_1_1>
                             )
                             {
                                 quatd xformOp:orient = (1, 0, 0, 0)
@@ -666,7 +666,7 @@ def Xform "g1_29dof_mode_15" (
 
                             def Xform "left_shoulder_pitch_link" (
                                 instanceable = true
-                                prepend references = @./instances.usda@</Instances/left_shoulder_pitch_link>
+                                prepend references = @./instances.usda@</Instances/left_shoulder_pitch_link_1>
                             )
                             {
                                 quatd xformOp:orient = (1, 0, 0, 0)
@@ -684,7 +684,7 @@ def Xform "g1_29dof_mode_15" (
 
                                 def Xform "left_shoulder_roll_link" (
                                     instanceable = true
-                                    prepend references = @./instances.usda@</Instances/left_shoulder_roll_link>
+                                    prepend references = @./instances.usda@</Instances/left_shoulder_roll_link_1>
                                 )
                                 {
                                     quatd xformOp:orient = (1, 0, 0, 0)
@@ -702,7 +702,7 @@ def Xform "g1_29dof_mode_15" (
 
                                     def Xform "left_shoulder_yaw_link" (
                                         instanceable = true
-                                        prepend references = @./instances.usda@</Instances/left_shoulder_yaw_link>
+                                        prepend references = @./instances.usda@</Instances/left_shoulder_yaw_link_1>
                                     )
                                     {
                                         quatd xformOp:orient = (1, 0, 0, 0)
@@ -720,7 +720,7 @@ def Xform "g1_29dof_mode_15" (
 
                                         def Xform "left_elbow_link" (
                                             instanceable = true
-                                            prepend references = @./instances.usda@</Instances/left_elbow_link>
+                                            prepend references = @./instances.usda@</Instances/left_elbow_link_1>
                                         )
                                         {
                                             quatd xformOp:orient = (1, 0, 0, 0)
@@ -738,7 +738,7 @@ def Xform "g1_29dof_mode_15" (
 
                                             def Xform "left_wrist_roll_link_5010" (
                                                 instanceable = true
-                                                prepend references = @./instances.usda@</Instances/left_wrist_roll_link_5010>
+                                                prepend references = @./instances.usda@</Instances/left_wrist_roll_link_5010_1>
                                             )
                                             {
                                                 quatd xformOp:orient = (1, 0, 0, 0)
@@ -756,7 +756,7 @@ def Xform "g1_29dof_mode_15" (
 
                                                 def Xform "left_wrist_pitch_link_5010" (
                                                     instanceable = true
-                                                    prepend references = @./instances.usda@</Instances/left_wrist_pitch_link_5010>
+                                                    prepend references = @./instances.usda@</Instances/left_wrist_pitch_link_5010_1>
                                                 )
                                                 {
                                                     quatd xformOp:orient = (1, 0, 0, 0)
@@ -774,7 +774,7 @@ def Xform "g1_29dof_mode_15" (
 
                                                     def Xform "left_wrist_yaw_link_5010" (
                                                         instanceable = true
-                                                        prepend references = @./instances.usda@</Instances/left_wrist_yaw_link_5010>
+                                                        prepend references = @./instances.usda@</Instances/left_wrist_yaw_link_5010_1>
                                                     )
                                                     {
                                                         quatd xformOp:orient = (1, 0, 0, 0)
@@ -785,7 +785,7 @@ def Xform "g1_29dof_mode_15" (
 
                                                     def Xform "left_rubber_hand" (
                                                         instanceable = true
-                                                        prepend references = @./instances.usda@</Instances/left_rubber_hand>
+                                                        prepend references = @./instances.usda@</Instances/left_rubber_hand_1>
                                                     )
                                                     {
                                                         quatd xformOp:orient = (1, 0, 0, 0)
@@ -797,7 +797,7 @@ def Xform "g1_29dof_mode_15" (
                                                     def Xform "left_wrist_yaw_link_5010_1" (
                                                         displayName = "left_wrist_yaw_link_5010"
                                                         instanceable = true
-                                                        prepend references = @./instances.usda@</Instances/left_wrist_yaw_link_5010_1>
+                                                        prepend references = @./instances.usda@</Instances/left_wrist_yaw_link_5010_1_1>
                                                     )
                                                     {
                                                         quatd xformOp:orient = (1, 0, 0, 0)
@@ -810,7 +810,7 @@ def Xform "g1_29dof_mode_15" (
                                                 def Xform "left_wrist_pitch_link_5010_1" (
                                                     displayName = "left_wrist_pitch_link_5010"
                                                     instanceable = true
-                                                    prepend references = @./instances.usda@</Instances/left_wrist_pitch_link_5010_1>
+                                                    prepend references = @./instances.usda@</Instances/left_wrist_pitch_link_5010_1_1>
                                                 )
                                                 {
                                                     quatd xformOp:orient = (1, 0, 0, 0)
@@ -823,7 +823,7 @@ def Xform "g1_29dof_mode_15" (
                                             def Xform "left_wrist_roll_link_5010_1" (
                                                 displayName = "left_wrist_roll_link_5010"
                                                 instanceable = true
-                                                prepend references = @./instances.usda@</Instances/left_wrist_roll_link_5010_1>
+                                                prepend references = @./instances.usda@</Instances/left_wrist_roll_link_5010_1_1>
                                             )
                                             {
                                                 quatd xformOp:orient = (1, 0, 0, 0)
@@ -836,7 +836,7 @@ def Xform "g1_29dof_mode_15" (
                                         def Xform "left_elbow_link_1" (
                                             displayName = "left_elbow_link"
                                             instanceable = true
-                                            prepend references = @./instances.usda@</Instances/left_elbow_link_1>
+                                            prepend references = @./instances.usda@</Instances/left_elbow_link_1_1>
                                         )
                                         {
                                             quatd xformOp:orient = (1, 0, 0, 0)
@@ -849,7 +849,7 @@ def Xform "g1_29dof_mode_15" (
                                     def Xform "left_shoulder_yaw_link_1" (
                                         displayName = "left_shoulder_yaw_link"
                                         instanceable = true
-                                        prepend references = @./instances.usda@</Instances/left_shoulder_yaw_link_1>
+                                        prepend references = @./instances.usda@</Instances/left_shoulder_yaw_link_1_1>
                                     )
                                     {
                                         quatd xformOp:orient = (1, 0, 0, 0)
@@ -900,7 +900,7 @@ def Xform "g1_29dof_mode_15" (
 
                             def Xform "right_shoulder_pitch_link" (
                                 instanceable = true
-                                prepend references = @./instances.usda@</Instances/right_shoulder_pitch_link>
+                                prepend references = @./instances.usda@</Instances/right_shoulder_pitch_link_1>
                             )
                             {
                                 quatd xformOp:orient = (1, 0, 0, 0)
@@ -918,7 +918,7 @@ def Xform "g1_29dof_mode_15" (
 
                                 def Xform "right_shoulder_roll_link" (
                                     instanceable = true
-                                    prepend references = @./instances.usda@</Instances/right_shoulder_roll_link>
+                                    prepend references = @./instances.usda@</Instances/right_shoulder_roll_link_1>
                                 )
                                 {
                                     quatd xformOp:orient = (1, 0, 0, 0)
@@ -936,7 +936,7 @@ def Xform "g1_29dof_mode_15" (
 
                                     def Xform "right_shoulder_yaw_link" (
                                         instanceable = true
-                                        prepend references = @./instances.usda@</Instances/right_shoulder_yaw_link>
+                                        prepend references = @./instances.usda@</Instances/right_shoulder_yaw_link_1>
                                     )
                                     {
                                         quatd xformOp:orient = (1, 0, 0, 0)
@@ -954,7 +954,7 @@ def Xform "g1_29dof_mode_15" (
 
                                         def Xform "right_elbow_link" (
                                             instanceable = true
-                                            prepend references = @./instances.usda@</Instances/right_elbow_link>
+                                            prepend references = @./instances.usda@</Instances/right_elbow_link_1>
                                         )
                                         {
                                             quatd xformOp:orient = (1, 0, 0, 0)
@@ -972,7 +972,7 @@ def Xform "g1_29dof_mode_15" (
 
                                             def Xform "right_wrist_roll_link_5010" (
                                                 instanceable = true
-                                                prepend references = @./instances.usda@</Instances/right_wrist_roll_link_5010>
+                                                prepend references = @./instances.usda@</Instances/right_wrist_roll_link_5010_1>
                                             )
                                             {
                                                 quatd xformOp:orient = (1, 0, 0, 0)
@@ -990,7 +990,7 @@ def Xform "g1_29dof_mode_15" (
 
                                                 def Xform "right_wrist_pitch_link_5010" (
                                                     instanceable = true
-                                                    prepend references = @./instances.usda@</Instances/right_wrist_pitch_link_5010>
+                                                    prepend references = @./instances.usda@</Instances/right_wrist_pitch_link_5010_1>
                                                 )
                                                 {
                                                     quatd xformOp:orient = (1, 0, 0, 0)
@@ -1008,7 +1008,7 @@ def Xform "g1_29dof_mode_15" (
 
                                                     def Xform "right_wrist_yaw_link_5010" (
                                                         instanceable = true
-                                                        prepend references = @./instances.usda@</Instances/right_wrist_yaw_link_5010>
+                                                        prepend references = @./instances.usda@</Instances/right_wrist_yaw_link_5010_1>
                                                     )
                                                     {
                                                         quatd xformOp:orient = (1, 0, 0, 0)
@@ -1019,7 +1019,7 @@ def Xform "g1_29dof_mode_15" (
 
                                                     def Xform "right_rubber_hand" (
                                                         instanceable = true
-                                                        prepend references = @./instances.usda@</Instances/right_rubber_hand>
+                                                        prepend references = @./instances.usda@</Instances/right_rubber_hand_1>
                                                     )
                                                     {
                                                         quatd xformOp:orient = (1, 0, 0, 0)
@@ -1031,7 +1031,7 @@ def Xform "g1_29dof_mode_15" (
                                                     def Xform "right_wrist_yaw_link_5010_1" (
                                                         displayName = "right_wrist_yaw_link_5010"
                                                         instanceable = true
-                                                        prepend references = @./instances.usda@</Instances/right_wrist_yaw_link_5010_1>
+                                                        prepend references = @./instances.usda@</Instances/right_wrist_yaw_link_5010_1_1>
                                                     )
                                                     {
                                                         quatd xformOp:orient = (1, 0, 0, 0)
@@ -1044,7 +1044,7 @@ def Xform "g1_29dof_mode_15" (
                                                 def Xform "right_wrist_pitch_link_5010_1" (
                                                     displayName = "right_wrist_pitch_link_5010"
                                                     instanceable = true
-                                                    prepend references = @./instances.usda@</Instances/right_wrist_pitch_link_5010_1>
+                                                    prepend references = @./instances.usda@</Instances/right_wrist_pitch_link_5010_1_1>
                                                 )
                                                 {
                                                     quatd xformOp:orient = (1, 0, 0, 0)
@@ -1057,7 +1057,7 @@ def Xform "g1_29dof_mode_15" (
                                             def Xform "right_wrist_roll_link_5010_1" (
                                                 displayName = "right_wrist_roll_link_5010"
                                                 instanceable = true
-                                                prepend references = @./instances.usda@</Instances/right_wrist_roll_link_5010_1>
+                                                prepend references = @./instances.usda@</Instances/right_wrist_roll_link_5010_1_1>
                                             )
                                             {
                                                 quatd xformOp:orient = (1, 0, 0, 0)
@@ -1070,7 +1070,7 @@ def Xform "g1_29dof_mode_15" (
                                         def Xform "right_elbow_link_1" (
                                             displayName = "right_elbow_link"
                                             instanceable = true
-                                            prepend references = @./instances.usda@</Instances/right_elbow_link_1>
+                                            prepend references = @./instances.usda@</Instances/right_elbow_link_1_1>
                                         )
                                         {
                                             quatd xformOp:orient = (1, 0, 0, 0)
@@ -1083,7 +1083,7 @@ def Xform "g1_29dof_mode_15" (
                                     def Xform "right_shoulder_yaw_link_1" (
                                         displayName = "right_shoulder_yaw_link"
                                         instanceable = true
-                                        prepend references = @./instances.usda@</Instances/right_shoulder_yaw_link_1>
+                                        prepend references = @./instances.usda@</Instances/right_shoulder_yaw_link_1_1>
                                     )
                                     {
                                         quatd xformOp:orient = (1, 0, 0, 0)
@@ -1128,7 +1128,7 @@ def Xform "g1_29dof_mode_15" (
                         def Xform "torso_link_rev_1_0_1" (
                             displayName = "torso_link_rev_1_0"
                             instanceable = true
-                            prepend references = @./instances.usda@</Instances/torso_link_rev_1_0_1>
+                            prepend references = @./instances.usda@</Instances/torso_link_rev_1_0_1_1>
                         )
                         {
                             quatd xformOp:orient = (1, 0, 0, 0)

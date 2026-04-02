@@ -65,6 +65,12 @@ parser.add_argument("--export_io_descriptors", action="store_true", default=Fals
 parser.add_argument(
     "--ray-proc-id", "-rid", type=int, default=None, help="Automatically configured by Ray integration, otherwise None."
 )
+parser.add_argument(
+    "--motion_file_path",
+    type=str,
+    default="scripts/rsl_rl/motion_file.yaml",
+    help="The name of the motion yaml file_path.",
+)
 cli_args.add_rsl_rl_args(parser)
 add_launcher_args(parser)
 args_cli, hydra_args = parser.parse_known_args()
@@ -125,6 +131,14 @@ def main(env_cfg: ManagerBasedRLEnvCfg | DirectRLEnvCfg | DirectMARLEnvCfg, agen
             seed = agent_cfg.seed + global_rank
             env_cfg.seed = seed
             agent_cfg.seed = seed
+        from load_motion_file import collect_npz_paths
+
+        motion_file_group = collect_npz_paths(args_cli.motion_file_path)
+        for group_name, paths in motion_file_group.items():
+            print(f"\nGroup: {group_name}")
+            print(f"[INFO] Collected {len(paths)} motion files for training.")
+        # print(motion_file)
+        env_cfg.commands.motion.motion_file = motion_file_group
 
         # specify directory for logging experiments
         log_root_path = os.path.join("logs", "rsl_rl", agent_cfg.experiment_name)

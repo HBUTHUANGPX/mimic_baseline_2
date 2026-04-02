@@ -2,7 +2,6 @@ import isaaclab.sim as sim_utils
 from isaaclab.actuators import ImplicitActuatorCfg, IdealPDActuatorCfg
 from isaaclab.assets.articulation import ArticulationCfg
 
-from GMT.assets import ASSET_DIR
 from GMT.robots import (
     tn_delayed_pd_actuators,
 )
@@ -155,7 +154,7 @@ G1_CYLINDER_CFG = ArticulationCfg(
     spawn=sim_utils.UrdfFileCfg(
         fix_base=False,
         replace_cylinders_with_capsules=True,
-        asset_path=ASSET_DIR + "/unitree_g1/g1_29dof_mode_15.urdf",
+        asset_path="assets/unitree_g1/g1_29dof_mode_15.urdf",
         activate_contact_sensors=True,
         rigid_props=sim_utils.RigidBodyPropertiesCfg(
             disable_gravity=False,
@@ -177,6 +176,24 @@ G1_CYLINDER_CFG = ArticulationCfg(
             )
         ),
     ),
+    # spawn=sim_utils.UsdFileCfg(
+    #     usd_path=ASSET_DIR + "/unitree_g1/g1_29dof_mode_15/g1_29dof_mode_15.usda",
+    #     activate_contact_sensors=True,
+    #     rigid_props=sim_utils.RigidBodyPropertiesCfg(
+    #         disable_gravity=False,
+    #         retain_accelerations=False,
+    #         linear_damping=0.0,
+    #         angular_damping=0.0,
+    #         max_linear_velocity=1000.0,
+    #         max_angular_velocity=1000.0,
+    #         max_depenetration_velocity=1.0,
+    #     ),
+    #     articulation_props=sim_utils.ArticulationRootPropertiesCfg(
+    #         enabled_self_collisions=False,
+    #         solver_position_iteration_count=8,
+    #         solver_velocity_iteration_count=4,
+    #     ),
+    # ),
     init_state=ArticulationCfg.InitialStateCfg(
         pos=(0.0, 0.0, 0.793),
         joint_pos={

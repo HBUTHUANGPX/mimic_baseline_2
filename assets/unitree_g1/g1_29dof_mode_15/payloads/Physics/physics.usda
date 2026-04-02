@@ -480,10 +480,8 @@ over "g1_29dof_mode_15"
         {
             float drive:angular:physics:maxForce = 139
             uniform token physics:axis = "Y"
-            custom rel physics:body0
-            prepend rel physics:body0 = </g1_29dof_mode_15/Geometry/pelvis>
-            custom rel physics:body1
-            prepend rel physics:body1 = </g1_29dof_mode_15/Geometry/pelvis/left_hip_pitch_link>
+            custom rel physics:body0 = </g1_29dof_mode_15/Geometry/pelvis>
+            custom rel physics:body1 = </g1_29dof_mode_15/Geometry/pelvis/left_hip_pitch_link>
             point3f physics:localPos0 = (0, 0.064452, -0.1027)
             point3f physics:localPos1 = (0, 0, 0)
             quatf physics:localRot0 = (1, 0, 0, 0)
@@ -500,10 +498,8 @@ over "g1_29dof_mode_15"
         {
             float drive:angular:physics:maxForce = 139
             uniform token physics:axis = "X"
-            custom rel physics:body0
-            prepend rel physics:body0 = </g1_29dof_mode_15/Geometry/pelvis/left_hip_pitch_link>
-            custom rel physics:body1
-            prepend rel physics:body1 = </g1_29dof_mode_15/Geometry/pelvis/left_hip_pitch_link/left_hip_roll_link>
+            custom rel physics:body0 = </g1_29dof_mode_15/Geometry/pelvis/left_hip_pitch_link>
+            custom rel physics:body1 = </g1_29dof_mode_15/Geometry/pelvis/left_hip_pitch_link/left_hip_roll_link>
             point3f physics:localPos0 = (0, 0.052, -0.030465)
             point3f physics:localPos1 = (0, 0, 0)
             quatf physics:localRot0 = (0.9961787, 0, -0.08733856, 0)
@@ -520,10 +516,8 @@ over "g1_29dof_mode_15"
         {
             float drive:angular:physics:maxForce = 88
             uniform token physics:axis = "Z"
-            custom rel physics:body0
-            prepend rel physics:body0 = </g1_29dof_mode_15/Geometry/pelvis/left_hip_pitch_link/left_hip_roll_link>
-            custom rel physics:body1
-            prepend rel physics:body1 = </g1_29dof_mode_15/Geometry/pelvis/left_hip_pitch_link/left_hip_roll_link/left_hip_yaw_link>
+            custom rel physics:body0 = </g1_29dof_mode_15/Geometry/pelvis/left_hip_pitch_link/left_hip_roll_link>
+            custom rel physics:body1 = </g1_29dof_mode_15/Geometry/pelvis/left_hip_pitch_link/left_hip_roll_link/left_hip_yaw_link>
             point3f physics:localPos0 = (0.025001, 0, -0.12412)
             point3f physics:localPos1 = (0, 0, 0)
             quatf physics:localRot0 = (1, 0, 0, 0)
@@ -540,10 +534,8 @@ over "g1_29dof_mode_15"
         {
             float drive:angular:physics:maxForce = 139
             uniform token physics:axis = "Y"
-            custom rel physics:body0
-            prepend rel physics:body0 = </g1_29dof_mode_15/Geometry/pelvis/left_hip_pitch_link/left_hip_roll_link/left_hip_yaw_link>
-            custom rel physics:body1
-            prepend rel physics:body1 = </g1_29dof_mode_15/Geometry/pelvis/left_hip_pitch_link/left_hip_roll_link/left_hip_yaw_link/left_knee_link>
+            custom rel physics:body0 = </g1_29dof_mode_15/Geometry/pelvis/left_hip_pitch_link/left_hip_roll_link/left_hip_yaw_link>
+            custom rel physics:body1 = </g1_29dof_mode_15/Geometry/pelvis/left_hip_pitch_link/left_hip_roll_link/left_hip_yaw_link/left_knee_link>
             point3f physics:localPos0 = (-0.078273, 0.0021489, -0.17734)
             point3f physics:localPos1 = (0, 0, 0)
             quatf physics:localRot0 = (0.9961787, 0, 0.08733856, 0)
@@ -560,10 +552,8 @@ over "g1_29dof_mode_15"
         {
             float drive:angular:physics:maxForce = 35
             uniform token physics:axis = "Y"
-            custom rel physics:body0
-            prepend rel physics:body0 = </g1_29dof_mode_15/Geometry/pelvis/left_hip_pitch_link/left_hip_roll_link/left_hip_yaw_link/left_knee_link>
-            custom rel physics:body1
-            prepend rel physics:body1 = </g1_29dof_mode_15/Geometry/pelvis/left_hip_pitch_link/left_hip_roll_link/left_hip_yaw_link/left_knee_link/left_ankle_pitch_link>
+            custom rel physics:body0 = </g1_29dof_mode_15/Geometry/pelvis/left_hip_pitch_link/left_hip_roll_link/left_hip_yaw_link/left_knee_link>
+            custom rel physics:body1 = </g1_29dof_mode_15/Geometry/pelvis/left_hip_pitch_link/left_hip_roll_link/left_hip_yaw_link/left_knee_link/left_ankle_pitch_link>
             point3f physics:localPos0 = (0, -0.000094445, -0.30001)
             point3f physics:localPos1 = (0, 0, 0)
             quatf physics:localRot0 = (1, 0, 0, 0)
@@ -580,10 +570,8 @@ over "g1_29dof_mode_15"
         {
             float drive:angular:physics:maxForce = 35
             uniform token physics:axis = "X"
-            custom rel physics:body0
-            prepend rel physics:body0 = </g1_29dof_mode_15/Geometry/pelvis/left_hip_pitch_link/left_hip_roll_link/left_hip_yaw_link/left_knee_link/left_ankle_pitch_link>
-            custom rel physics:body1
-            prepend rel physics:body1 = </g1_29dof_mode_15/Geometry/pelvis/left_hip_pitch_link/left_hip_roll_link/left_hip_yaw_link/left_knee_link/left_ankle_pitch_link/left_ankle_roll_link>
+            custom rel physics:body0 = </g1_29dof_mode_15/Geometry/pelvis/left_hip_pitch_link/left_hip_roll_link/left_hip_yaw_link/left_knee_link/left_ankle_pitch_link>
+            custom rel physics:body1 = </g1_29dof_mode_15/Geometry/pelvis/left_hip_pitch_link/left_hip_roll_link/left_hip_yaw_link/left_knee_link/left_ankle_pitch_link/left_ankle_roll_link>
             point3f physics:localPos0 = (0, 0, -0.017558)
             point3f physics:localPos1 = (0, 0, 0)
             quatf physics:localRot0 = (1, 0, 0, 0)
@@ -600,10 +588,8 @@ over "g1_29dof_mode_15"
         {
             float drive:angular:physics:maxForce = 139
             uniform token physics:axis = "Y"
-            custom rel physics:body0
-            prepend rel physics:body0 = </g1_29dof_mode_15/Geometry/pelvis>
-            custom rel physics:body1
-            prepend rel physics:body1 = </g1_29dof_mode_15/Geometry/pelvis/right_hip_pitch_link>
+            custom rel physics:body0 = </g1_29dof_mode_15/Geometry/pelvis>
+            custom rel physics:body1 = </g1_29dof_mode_15/Geometry/pelvis/right_hip_pitch_link>
             point3f physics:localPos0 = (0, -0.064452, -0.1027)
             point3f physics:localPos1 = (0, 0, 0)
             quatf physics:localRot0 = (1, 0, 0, 0)
@@ -620,10 +606,8 @@ over "g1_29dof_mode_15"
         {
             float drive:angular:physics:maxForce = 139
             uniform token physics:axis = "X"
-            custom rel physics:body0
-            prepend rel physics:body0 = </g1_29dof_mode_15/Geometry/pelvis/right_hip_pitch_link>
-            custom rel physics:body1
-            prepend rel physics:body1 = </g1_29dof_mode_15/Geometry/pelvis/right_hip_pitch_link/right_hip_roll_link>
+            custom rel physics:body0 = </g1_29dof_mode_15/Geometry/pelvis/right_hip_pitch_link>
+            custom rel physics:body1 = </g1_29dof_mode_15/Geometry/pelvis/right_hip_pitch_link/right_hip_roll_link>
             point3f physics:localPos0 = (0, -0.052, -0.030465)
             point3f physics:localPos1 = (0, 0, 0)
             quatf physics:localRot0 = (0.9961787, 0, -0.08733856, 0)
@@ -640,10 +624,8 @@ over "g1_29dof_mode_15"
         {
             float drive:angular:physics:maxForce = 88
             uniform token physics:axis = "Z"
-            custom rel physics:body0
-            prepend rel physics:body0 = </g1_29dof_mode_15/Geometry/pelvis/right_hip_pitch_link/right_hip_roll_link>
-            custom rel physics:body1
-            prepend rel physics:body1 = </g1_29dof_mode_15/Geometry/pelvis/right_hip_pitch_link/right_hip_roll_link/right_hip_yaw_link>
+            custom rel physics:body0 = </g1_29dof_mode_15/Geometry/pelvis/right_hip_pitch_link/right_hip_roll_link>
+            custom rel physics:body1 = </g1_29dof_mode_15/Geometry/pelvis/right_hip_pitch_link/right_hip_roll_link/right_hip_yaw_link>
             point3f physics:localPos0 = (0.025001, 0, -0.12412)
             point3f physics:localPos1 = (0, 0, 0)
             quatf physics:localRot0 = (1, 0, 0, 0)
@@ -660,10 +642,8 @@ over "g1_29dof_mode_15"
         {
             float drive:angular:physics:maxForce = 139
             uniform token physics:axis = "Y"
-            custom rel physics:body0
-            prepend rel physics:body0 = </g1_29dof_mode_15/Geometry/pelvis/right_hip_pitch_link/right_hip_roll_link/right_hip_yaw_link>
-            custom rel physics:body1
-            prepend rel physics:body1 = </g1_29dof_mode_15/Geometry/pelvis/right_hip_pitch_link/right_hip_roll_link/right_hip_yaw_link/right_knee_link>
+            custom rel physics:body0 = </g1_29dof_mode_15/Geometry/pelvis/right_hip_pitch_link/right_hip_roll_link/right_hip_yaw_link>
+            custom rel physics:body1 = </g1_29dof_mode_15/Geometry/pelvis/right_hip_pitch_link/right_hip_roll_link/right_hip_yaw_link/right_knee_link>
             point3f physics:localPos0 = (-0.078273, -0.0021489, -0.17734)
             point3f physics:localPos1 = (0, 0, 0)
             quatf physics:localRot0 = (0.9961787, 0, 0.08733856, 0)
@@ -680,10 +660,8 @@ over "g1_29dof_mode_15"
         {
             float drive:angular:physics:maxForce = 35
             uniform token physics:axis = "Y"
-            custom rel physics:body0
-            prepend rel physics:body0 = </g1_29dof_mode_15/Geometry/pelvis/right_hip_pitch_link/right_hip_roll_link/right_hip_yaw_link/right_knee_link>
-            custom rel physics:body1
-            prepend rel physics:body1 = </g1_29dof_mode_15/Geometry/pelvis/right_hip_pitch_link/right_hip_roll_link/right_hip_yaw_link/right_knee_link/right_ankle_pitch_link>
+            custom rel physics:body0 = </g1_29dof_mode_15/Geometry/pelvis/right_hip_pitch_link/right_hip_roll_link/right_hip_yaw_link/right_knee_link>
+            custom rel physics:body1 = </g1_29dof_mode_15/Geometry/pelvis/right_hip_pitch_link/right_hip_roll_link/right_hip_yaw_link/right_knee_link/right_ankle_pitch_link>
             point3f physics:localPos0 = (0, 0.000094445, -0.30001)
             point3f physics:localPos1 = (0, 0, 0)
             quatf physics:localRot0 = (1, 0, 0, 0)
@@ -700,10 +678,8 @@ over "g1_29dof_mode_15"
         {
             float drive:angular:physics:maxForce = 35
             uniform token physics:axis = "X"
-            custom rel physics:body0
-            prepend rel physics:body0 = </g1_29dof_mode_15/Geometry/pelvis/right_hip_pitch_link/right_hip_roll_link/right_hip_yaw_link/right_knee_link/right_ankle_pitch_link>
-            custom rel physics:body1
-            prepend rel physics:body1 = </g1_29dof_mode_15/Geometry/pelvis/right_hip_pitch_link/right_hip_roll_link/right_hip_yaw_link/right_knee_link/right_ankle_pitch_link/right_ankle_roll_link>
+            custom rel physics:body0 = </g1_29dof_mode_15/Geometry/pelvis/right_hip_pitch_link/right_hip_roll_link/right_hip_yaw_link/right_knee_link/right_ankle_pitch_link>
+            custom rel physics:body1 = </g1_29dof_mode_15/Geometry/pelvis/right_hip_pitch_link/right_hip_roll_link/right_hip_yaw_link/right_knee_link/right_ankle_pitch_link/right_ankle_roll_link>
             point3f physics:localPos0 = (0, 0, -0.017558)
             point3f physics:localPos1 = (0, 0, 0)
             quatf physics:localRot0 = (1, 0, 0, 0)
@@ -720,10 +696,8 @@ over "g1_29dof_mode_15"
         {
             float drive:angular:physics:maxForce = 88
             uniform token physics:axis = "Z"
-            custom rel physics:body0
-            prepend rel physics:body0 = </g1_29dof_mode_15/Geometry/pelvis>
-            custom rel physics:body1
-            prepend rel physics:body1 = </g1_29dof_mode_15/Geometry/pelvis/waist_yaw_link>
+            custom rel physics:body0 = </g1_29dof_mode_15/Geometry/pelvis>
+            custom rel physics:body1 = </g1_29dof_mode_15/Geometry/pelvis/waist_yaw_link>
             point3f physics:localPos0 = (0, 0, 0)
             point3f physics:localPos1 = (0, 0, 0)
             quatf physics:localRot0 = (1, 0, 0, 0)
@@ -740,10 +714,8 @@ over "g1_29dof_mode_15"
         {
             float drive:angular:physics:maxForce = 35
             uniform token physics:axis = "X"
-            custom rel physics:body0
-            prepend rel physics:body0 = </g1_29dof_mode_15/Geometry/pelvis/waist_yaw_link>
-            custom rel physics:body1
-            prepend rel physics:body1 = </g1_29dof_mode_15/Geometry/pelvis/waist_yaw_link/waist_roll_link>
+            custom rel physics:body0 = </g1_29dof_mode_15/Geometry/pelvis/waist_yaw_link>
+            custom rel physics:body1 = </g1_29dof_mode_15/Geometry/pelvis/waist_yaw_link/waist_roll_link>
             point3f physics:localPos0 = (-0.0039635, 0, 0.044)
             point3f physics:localPos1 = (0, 0, 0)
             quatf physics:localRot0 = (1, 0, 0, 0)
@@ -760,10 +732,8 @@ over "g1_29dof_mode_15"
         {
             float drive:angular:physics:maxForce = 35
             uniform token physics:axis = "Y"
-            custom rel physics:body0
-            prepend rel physics:body0 = </g1_29dof_mode_15/Geometry/pelvis/waist_yaw_link/waist_roll_link>
-            custom rel physics:body1
-            prepend rel physics:body1 = </g1_29dof_mode_15/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link>
+            custom rel physics:body0 = </g1_29dof_mode_15/Geometry/pelvis/waist_yaw_link/waist_roll_link>
+            custom rel physics:body1 = </g1_29dof_mode_15/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link>
             point3f physics:localPos0 = (0, 0, 0)
             point3f physics:localPos1 = (0, 0, 0)
             quatf physics:localRot0 = (1, 0, 0, 0)
@@ -780,10 +750,8 @@ over "g1_29dof_mode_15"
         {
             float drive:angular:physics:maxForce = 25
             uniform token physics:axis = "Y"
-            custom rel physics:body0
-            prepend rel physics:body0 = </g1_29dof_mode_15/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link>
-            custom rel physics:body1
-            prepend rel physics:body1 = </g1_29dof_mode_15/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/left_shoulder_pitch_link>
+            custom rel physics:body0 = </g1_29dof_mode_15/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link>
+            custom rel physics:body1 = </g1_29dof_mode_15/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/left_shoulder_pitch_link>
             point3f physics:localPos0 = (0.0039563, 0.10022, 0.24778)
             point3f physics:localPos1 = (0, 0, 0)
             quatf physics:localRot0 = (0.99026406, 0.1392016, 0.000013872216, -0.00009868693)
@@ -800,10 +768,8 @@ over "g1_29dof_mode_15"
         {
             float drive:angular:physics:maxForce = 25
             uniform token physics:axis = "X"
-            custom rel physics:body0
-            prepend rel physics:body0 = </g1_29dof_mode_15/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/left_shoulder_pitch_link>
-            custom rel physics:body1
-            prepend rel physics:body1 = </g1_29dof_mode_15/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/left_shoulder_pitch_link/left_shoulder_roll_link>
+            custom rel physics:body0 = </g1_29dof_mode_15/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/left_shoulder_pitch_link>
+            custom rel physics:body1 = </g1_29dof_mode_15/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/left_shoulder_pitch_link/left_shoulder_roll_link>
             point3f physics:localPos0 = (0, 0.038, -0.013831)
             point3f physics:localPos1 = (0, 0, 0)
             quatf physics:localRot0 = (0.99026823, -0.13917194, -5.1686486e-14, 3.6774308e-13)
@@ -820,10 +786,8 @@ over "g1_29dof_mode_15"
         {
             float drive:angular:physics:maxForce = 25
             uniform token physics:axis = "Z"
-            custom rel physics:body0
-            prepend rel physics:body0 = </g1_29dof_mode_15/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/left_shoulder_pitch_link/left_shoulder_roll_link>
-            custom rel physics:body1
-            prepend rel physics:body1 = </g1_29dof_mode_15/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/left_shoulder_pitch_link/left_shoulder_roll_link/left_shoulder_yaw_link>
+            custom rel physics:body0 = </g1_29dof_mode_15/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/left_shoulder_pitch_link/left_shoulder_roll_link>
+            custom rel physics:body1 = </g1_29dof_mode_15/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/left_shoulder_pitch_link/left_shoulder_roll_link/left_shoulder_yaw_link>
             point3f physics:localPos0 = (0, 0.00624, -0.1032)
             point3f physics:localPos1 = (0, 0, 0)
             quatf physics:localRot0 = (1, 0, 0, 0)
@@ -840,10 +804,8 @@ over "g1_29dof_mode_15"
         {
             float drive:angular:physics:maxForce = 25
             uniform token physics:axis = "Y"
-            custom rel physics:body0
-            prepend rel physics:body0 = </g1_29dof_mode_15/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/left_shoulder_pitch_link/left_shoulder_roll_link/left_shoulder_yaw_link>
-            custom rel physics:body1
-            prepend rel physics:body1 = </g1_29dof_mode_15/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/left_shoulder_pitch_link/left_shoulder_roll_link/left_shoulder_yaw_link/left_elbow_link>
+            custom rel physics:body0 = </g1_29dof_mode_15/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/left_shoulder_pitch_link/left_shoulder_roll_link/left_shoulder_yaw_link>
+            custom rel physics:body1 = </g1_29dof_mode_15/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/left_shoulder_pitch_link/left_shoulder_roll_link/left_shoulder_yaw_link/left_elbow_link>
             point3f physics:localPos0 = (0.015783, 5.551115e-17, -0.080518)
             point3f physics:localPos1 = (0, 0, 0)
             quatf physics:localRot0 = (1, 0, 0, 0)
@@ -860,10 +822,8 @@ over "g1_29dof_mode_15"
         {
             float drive:angular:physics:maxForce = 25
             uniform token physics:axis = "X"
-            custom rel physics:body0
-            prepend rel physics:body0 = </g1_29dof_mode_15/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/left_shoulder_pitch_link/left_shoulder_roll_link/left_shoulder_yaw_link/left_elbow_link>
-            custom rel physics:body1
-            prepend rel physics:body1 = </g1_29dof_mode_15/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/left_shoulder_pitch_link/left_shoulder_roll_link/left_shoulder_yaw_link/left_elbow_link/left_wrist_roll_link>
+            custom rel physics:body0 = </g1_29dof_mode_15/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/left_shoulder_pitch_link/left_shoulder_roll_link/left_shoulder_yaw_link/left_elbow_link>
+            custom rel physics:body1 = </g1_29dof_mode_15/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/left_shoulder_pitch_link/left_shoulder_roll_link/left_shoulder_yaw_link/left_elbow_link/left_wrist_roll_link>
             point3f physics:localPos0 = (0.1, 0.00188791, -0.01)
             point3f physics:localPos1 = (0, 0, 0)
             quatf physics:localRot0 = (1, 0, 0, 0)
@@ -880,10 +840,8 @@ over "g1_29dof_mode_15"
         {
             float drive:angular:physics:maxForce = 13.4
             uniform token physics:axis = "Y"
-            custom rel physics:body0
-            prepend rel physics:body0 = </g1_29dof_mode_15/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/left_shoulder_pitch_link/left_shoulder_roll_link/left_shoulder_yaw_link/left_elbow_link/left_wrist_roll_link>
-            custom rel physics:body1
-            prepend rel physics:body1 = </g1_29dof_mode_15/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/left_shoulder_pitch_link/left_shoulder_roll_link/left_shoulder_yaw_link/left_elbow_link/left_wrist_roll_link/left_wrist_pitch_link>
+            custom rel physics:body0 = </g1_29dof_mode_15/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/left_shoulder_pitch_link/left_shoulder_roll_link/left_shoulder_yaw_link/left_elbow_link/left_wrist_roll_link>
+            custom rel physics:body1 = </g1_29dof_mode_15/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/left_shoulder_pitch_link/left_shoulder_roll_link/left_shoulder_yaw_link/left_elbow_link/left_wrist_roll_link/left_wrist_pitch_link>
             point3f physics:localPos0 = (0.038, 2.7755576e-17, 1.3877788e-17)
             point3f physics:localPos1 = (0, 0, 0)
             quatf physics:localRot0 = (1, 0, 0, 0)
@@ -900,10 +858,8 @@ over "g1_29dof_mode_15"
         {
             float drive:angular:physics:maxForce = 13.4
             uniform token physics:axis = "Z"
-            custom rel physics:body0
-            prepend rel physics:body0 = </g1_29dof_mode_15/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/left_shoulder_pitch_link/left_shoulder_roll_link/left_shoulder_yaw_link/left_elbow_link/left_wrist_roll_link/left_wrist_pitch_link>
-            custom rel physics:body1
-            prepend rel physics:body1 = </g1_29dof_mode_15/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/left_shoulder_pitch_link/left_shoulder_roll_link/left_shoulder_yaw_link/left_elbow_link/left_wrist_roll_link/left_wrist_pitch_link/left_wrist_yaw_link>
+            custom rel physics:body0 = </g1_29dof_mode_15/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/left_shoulder_pitch_link/left_shoulder_roll_link/left_shoulder_yaw_link/left_elbow_link/left_wrist_roll_link/left_wrist_pitch_link>
+            custom rel physics:body1 = </g1_29dof_mode_15/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/left_shoulder_pitch_link/left_shoulder_roll_link/left_shoulder_yaw_link/left_elbow_link/left_wrist_roll_link/left_wrist_pitch_link/left_wrist_yaw_link>
             point3f physics:localPos0 = (0.051, -2.7755576e-17, -1.3877788e-17)
             point3f physics:localPos1 = (0, 0, 0)
             quatf physics:localRot0 = (1, 0, 0, 0)
@@ -920,10 +876,8 @@ over "g1_29dof_mode_15"
         {
             float drive:angular:physics:maxForce = 25
             uniform token physics:axis = "Y"
-            custom rel physics:body0
-            prepend rel physics:body0 = </g1_29dof_mode_15/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link>
-            custom rel physics:body1
-            prepend rel physics:body1 = </g1_29dof_mode_15/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/right_shoulder_pitch_link>
+            custom rel physics:body0 = </g1_29dof_mode_15/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link>
+            custom rel physics:body1 = </g1_29dof_mode_15/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/right_shoulder_pitch_link>
             point3f physics:localPos0 = (0.0039563, -0.10021, 0.24778)
             point3f physics:localPos1 = (0, 0, 0)
             quatf physics:localRot0 = (0.99026406, -0.1392016, 0.000013872216, 0.00009868693)
@@ -940,10 +894,8 @@ over "g1_29dof_mode_15"
         {
             float drive:angular:physics:maxForce = 25
             uniform token physics:axis = "X"
-            custom rel physics:body0
-            prepend rel physics:body0 = </g1_29dof_mode_15/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/right_shoulder_pitch_link>
-            custom rel physics:body1
-            prepend rel physics:body1 = </g1_29dof_mode_15/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/right_shoulder_pitch_link/right_shoulder_roll_link>
+            custom rel physics:body0 = </g1_29dof_mode_15/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/right_shoulder_pitch_link>
+            custom rel physics:body1 = </g1_29dof_mode_15/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/right_shoulder_pitch_link/right_shoulder_roll_link>
             point3f physics:localPos0 = (6.7762636e-21, -0.038, -0.013831)
             point3f physics:localPos1 = (0, 0, 0)
             quatf physics:localRot0 = (0.99026823, 0.13917194, -5.169905e-14, -3.6774135e-13)
@@ -960,10 +912,8 @@ over "g1_29dof_mode_15"
         {
             float drive:angular:physics:maxForce = 25
             uniform token physics:axis = "Z"
-            custom rel physics:body0
-            prepend rel physics:body0 = </g1_29dof_mode_15/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/right_shoulder_pitch_link/right_shoulder_roll_link>
-            custom rel physics:body1
-            prepend rel physics:body1 = </g1_29dof_mode_15/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/right_shoulder_pitch_link/right_shoulder_roll_link/right_shoulder_yaw_link>
+            custom rel physics:body0 = </g1_29dof_mode_15/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/right_shoulder_pitch_link/right_shoulder_roll_link>
+            custom rel physics:body1 = </g1_29dof_mode_15/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/right_shoulder_pitch_link/right_shoulder_roll_link/right_shoulder_yaw_link>
             point3f physics:localPos0 = (0, -0.00624, -0.1032)
             point3f physics:localPos1 = (0, 0, 0)
             quatf physics:localRot0 = (1, 0, 0, 0)
@@ -980,10 +930,8 @@ over "g1_29dof_mode_15"
         {
             float drive:angular:physics:maxForce = 25
             uniform token physics:axis = "Y"
-            custom rel physics:body0
-            prepend rel physics:body0 = </g1_29dof_mode_15/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/right_shoulder_pitch_link/right_shoulder_roll_link/right_shoulder_yaw_link>
-            custom rel physics:body1
-            prepend rel physics:body1 = </g1_29dof_mode_15/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/right_shoulder_pitch_link/right_shoulder_roll_link/right_shoulder_yaw_link/right_elbow_link>
+            custom rel physics:body0 = </g1_29dof_mode_15/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/right_shoulder_pitch_link/right_shoulder_roll_link/right_shoulder_yaw_link>
+            custom rel physics:body1 = </g1_29dof_mode_15/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/right_shoulder_pitch_link/right_shoulder_roll_link/right_shoulder_yaw_link/right_elbow_link>
             point3f physics:localPos0 = (0.015783, -2.7755576e-17, -0.080518)
             point3f physics:localPos1 = (0, 0, 0)
             quatf physics:localRot0 = (1, 0, 0, 0)
@@ -1000,10 +948,8 @@ over "g1_29dof_mode_15"
         {
             float drive:angular:physics:maxForce = 25
             uniform token physics:axis = "X"
-            custom rel physics:body0
-            prepend rel physics:body0 = </g1_29dof_mode_15/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/right_shoulder_pitch_link/right_shoulder_roll_link/right_shoulder_yaw_link/right_elbow_link>
-            custom rel physics:body1
-            prepend rel physics:body1 = </g1_29dof_mode_15/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/right_shoulder_pitch_link/right_shoulder_roll_link/right_shoulder_yaw_link/right_elbow_link/right_wrist_roll_link>
+            custom rel physics:body0 = </g1_29dof_mode_15/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/right_shoulder_pitch_link/right_shoulder_roll_link/right_shoulder_yaw_link/right_elbow_link>
+            custom rel physics:body1 = </g1_29dof_mode_15/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/right_shoulder_pitch_link/right_shoulder_roll_link/right_shoulder_yaw_link/right_elbow_link/right_wrist_roll_link>
             point3f physics:localPos0 = (0.1, -0.00188791, -0.01)
             point3f physics:localPos1 = (0, 0, 0)
             quatf physics:localRot0 = (1, 0, 0, 0)
@@ -1020,10 +966,8 @@ over "g1_29dof_mode_15"
         {
             float drive:angular:physics:maxForce = 13.4
             uniform token physics:axis = "Y"
-            custom rel physics:body0
-            prepend rel physics:body0 = </g1_29dof_mode_15/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/right_shoulder_pitch_link/right_shoulder_roll_link/right_shoulder_yaw_link/right_elbow_link/right_wrist_roll_link>
-            custom rel physics:body1
-            prepend rel physics:body1 = </g1_29dof_mode_15/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/right_shoulder_pitch_link/right_shoulder_roll_link/right_shoulder_yaw_link/right_elbow_link/right_wrist_roll_link/right_wrist_pitch_link>
+            custom rel physics:body0 = </g1_29dof_mode_15/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/right_shoulder_pitch_link/right_shoulder_roll_link/right_shoulder_yaw_link/right_elbow_link/right_wrist_roll_link>
+            custom rel physics:body1 = </g1_29dof_mode_15/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/right_shoulder_pitch_link/right_shoulder_roll_link/right_shoulder_yaw_link/right_elbow_link/right_wrist_roll_link/right_wrist_pitch_link>
             point3f physics:localPos0 = (0.038, 0, 1.3877788e-17)
             point3f physics:localPos1 = (0, 0, 0)
             quatf physics:localRot0 = (1, 0, 0, 0)
@@ -1040,10 +984,8 @@ over "g1_29dof_mode_15"
         {
             float drive:angular:physics:maxForce = 13.4
             uniform token physics:axis = "Z"
-            custom rel physics:body0
-            prepend rel physics:body0 = </g1_29dof_mode_15/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/right_shoulder_pitch_link/right_shoulder_roll_link/right_shoulder_yaw_link/right_elbow_link/right_wrist_roll_link/right_wrist_pitch_link>
-            custom rel physics:body1
-            prepend rel physics:body1 = </g1_29dof_mode_15/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/right_shoulder_pitch_link/right_shoulder_roll_link/right_shoulder_yaw_link/right_elbow_link/right_wrist_roll_link/right_wrist_pitch_link/right_wrist_yaw_link>
+            custom rel physics:body0 = </g1_29dof_mode_15/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/right_shoulder_pitch_link/right_shoulder_roll_link/right_shoulder_yaw_link/right_elbow_link/right_wrist_roll_link/right_wrist_pitch_link>
+            custom rel physics:body1 = </g1_29dof_mode_15/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/right_shoulder_pitch_link/right_shoulder_roll_link/right_shoulder_yaw_link/right_elbow_link/right_wrist_roll_link/right_wrist_pitch_link/right_wrist_yaw_link>
             point3f physics:localPos0 = (0.051, 0, 0)
             point3f physics:localPos1 = (0, 0, 0)
             quatf physics:localRot0 = (1, 0, 0, 0)
@@ -1056,10 +998,8 @@ over "g1_29dof_mode_15"
 
         def PhysicsFixedJoint "root_joint"
         {
-            custom rel physics:body0
-            prepend rel physics:body0 = </g1_29dof_mode_15>
-            custom rel physics:body1
-            prepend rel physics:body1 = </g1_29dof_mode_15/Geometry/pelvis>
+            custom rel physics:body0 = </g1_29dof_mode_15>
+            custom rel physics:body1 = </g1_29dof_mode_15/Geometry/pelvis>
             point3f physics:localPos0 = (0, 0, 0)
             point3f physics:localPos1 = (0, 0, 0)
             quatf physics:localRot0 = (1, 0, 0, 0)
@@ -1068,10 +1008,8 @@ over "g1_29dof_mode_15"
 
         def PhysicsFixedJoint "pelvis_contour_joint"
         {
-            custom rel physics:body0
-            prepend rel physics:body0 = </g1_29dof_mode_15/Geometry/pelvis>
-            custom rel physics:body1
-            prepend rel physics:body1 = </g1_29dof_mode_15/Geometry/pelvis/pelvis_contour_link>
+            custom rel physics:body0 = </g1_29dof_mode_15/Geometry/pelvis>
+            custom rel physics:body1 = </g1_29dof_mode_15/Geometry/pelvis/pelvis_contour_link>
             point3f physics:localPos0 = (0, 0, 0)
             point3f physics:localPos1 = (0, 0, 0)
             quatf physics:localRot0 = (1, 0, 0, 0)
@@ -1080,10 +1018,8 @@ over "g1_29dof_mode_15"
 
         def PhysicsFixedJoint "logo_joint"
         {
-            custom rel physics:body0
-            prepend rel physics:body0 = </g1_29dof_mode_15/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link>
-            custom rel physics:body1
-            prepend rel physics:body1 = </g1_29dof_mode_15/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/logo_link>
+            custom rel physics:body0 = </g1_29dof_mode_15/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link>
+            custom rel physics:body1 = </g1_29dof_mode_15/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/logo_link>
             point3f physics:localPos0 = (0.0039635, 0, -0.044)
             point3f physics:localPos1 = (0, 0, 0)
             quatf physics:localRot0 = (1, 0, 0, 0)
@@ -1092,10 +1028,8 @@ over "g1_29dof_mode_15"
 
         def PhysicsFixedJoint "head_joint"
         {
-            custom rel physics:body0
-            prepend rel physics:body0 = </g1_29dof_mode_15/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link>
-            custom rel physics:body1
-            prepend rel physics:body1 = </g1_29dof_mode_15/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/head_link>
+            custom rel physics:body0 = </g1_29dof_mode_15/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link>
+            custom rel physics:body1 = </g1_29dof_mode_15/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/head_link>
             point3f physics:localPos0 = (0.0039635, 0, -0.044)
             point3f physics:localPos1 = (0, 0, 0)
             quatf physics:localRot0 = (1, 0, 0, 0)
@@ -1104,10 +1038,8 @@ over "g1_29dof_mode_15"
 
         def PhysicsFixedJoint "imu_in_torso_joint"
         {
-            custom rel physics:body0
-            prepend rel physics:body0 = </g1_29dof_mode_15/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link>
-            custom rel physics:body1
-            prepend rel physics:body1 = </g1_29dof_mode_15/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/imu_in_torso>
+            custom rel physics:body0 = </g1_29dof_mode_15/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link>
+            custom rel physics:body1 = </g1_29dof_mode_15/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/imu_in_torso>
             point3f physics:localPos0 = (-0.03959, -0.00224, 0.14792)
             point3f physics:localPos1 = (0, 0, 0)
             quatf physics:localRot0 = (1, 0, 0, 0)
@@ -1116,10 +1048,8 @@ over "g1_29dof_mode_15"
 
         def PhysicsFixedJoint "imu_in_pelvis_joint"
         {
-            custom rel physics:body0
-            prepend rel physics:body0 = </g1_29dof_mode_15/Geometry/pelvis>
-            custom rel physics:body1
-            prepend rel physics:body1 = </g1_29dof_mode_15/Geometry/pelvis/imu_in_pelvis>
+            custom rel physics:body0 = </g1_29dof_mode_15/Geometry/pelvis>
+            custom rel physics:body1 = </g1_29dof_mode_15/Geometry/pelvis/imu_in_pelvis>
             point3f physics:localPos0 = (0.04525, 0, -0.08339)
             point3f physics:localPos1 = (0, 0, 0)
             quatf physics:localRot0 = (1, 0, 0, 0)
@@ -1128,10 +1058,8 @@ over "g1_29dof_mode_15"
 
         def PhysicsFixedJoint "d435_joint"
         {
-            custom rel physics:body0
-            prepend rel physics:body0 = </g1_29dof_mode_15/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link>
-            custom rel physics:body1
-            prepend rel physics:body1 = </g1_29dof_mode_15/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/d435_link>
+            custom rel physics:body0 = </g1_29dof_mode_15/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link>
+            custom rel physics:body1 = </g1_29dof_mode_15/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/d435_link>
             point3f physics:localPos0 = (0.0576235, 0.01753, 0.42987)
             point3f physics:localPos1 = (0, 0, 0)
             quatf physics:localRot0 = (0.91495967, 0, 0.4035453, 0)
@@ -1140,10 +1068,8 @@ over "g1_29dof_mode_15"
 
         def PhysicsFixedJoint "mid360_joint"
         {
-            custom rel physics:body0
-            prepend rel physics:body0 = </g1_29dof_mode_15/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link>
-            custom rel physics:body1
-            prepend rel physics:body1 = </g1_29dof_mode_15/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/mid360_link>
+            custom rel physics:body0 = </g1_29dof_mode_15/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link>
+            custom rel physics:body1 = </g1_29dof_mode_15/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/mid360_link>
             point3f physics:localPos0 = (0.0002835, 0.00003, 0.41618)
             point3f physics:localPos1 = (0, 0, 0)
             quatf physics:localRot0 = (0.9997986, 0, 0.020069072, 0)
@@ -1152,10 +1078,8 @@ over "g1_29dof_mode_15"
 
         def PhysicsFixedJoint "left_hand_palm_joint"
         {
-            custom rel physics:body0
-            prepend rel physics:body0 = </g1_29dof_mode_15/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/left_shoulder_pitch_link/left_shoulder_roll_link/left_shoulder_yaw_link/left_elbow_link/left_wrist_roll_link/left_wrist_pitch_link/left_wrist_yaw_link>
-            custom rel physics:body1
-            prepend rel physics:body1 = </g1_29dof_mode_15/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/left_shoulder_pitch_link/left_shoulder_roll_link/left_shoulder_yaw_link/left_elbow_link/left_wrist_roll_link/left_wrist_pitch_link/left_wrist_yaw_link/left_rubber_hand>
+            custom rel physics:body0 = </g1_29dof_mode_15/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/left_shoulder_pitch_link/left_shoulder_roll_link/left_shoulder_yaw_link/left_elbow_link/left_wrist_roll_link/left_wrist_pitch_link/left_wrist_yaw_link>
+            custom rel physics:body1 = </g1_29dof_mode_15/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/left_shoulder_pitch_link/left_shoulder_roll_link/left_shoulder_yaw_link/left_elbow_link/left_wrist_roll_link/left_wrist_pitch_link/left_wrist_yaw_link/left_rubber_hand>
             point3f physics:localPos0 = (0.0415, 0.003, 1.3877788e-17)
             point3f physics:localPos1 = (0, 0, 0)
             quatf physics:localRot0 = (1, 0, 0, 0)
@@ -1164,10 +1088,8 @@ over "g1_29dof_mode_15"
 
         def PhysicsFixedJoint "right_hand_palm_joint"
         {
-            custom rel physics:body0
-            prepend rel physics:body0 = </g1_29dof_mode_15/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/right_shoulder_pitch_link/right_shoulder_roll_link/right_shoulder_yaw_link/right_elbow_link/right_wrist_roll_link/right_wrist_pitch_link/right_wrist_yaw_link>
-            custom rel physics:body1
-            prepend rel physics:body1 = </g1_29dof_mode_15/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/right_shoulder_pitch_link/right_shoulder_roll_link/right_shoulder_yaw_link/right_elbow_link/right_wrist_roll_link/right_wrist_pitch_link/right_wrist_yaw_link/right_rubber_hand>
+            custom rel physics:body0 = </g1_29dof_mode_15/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/right_shoulder_pitch_link/right_shoulder_roll_link/right_shoulder_yaw_link/right_elbow_link/right_wrist_roll_link/right_wrist_pitch_link/right_wrist_yaw_link>
+            custom rel physics:body1 = </g1_29dof_mode_15/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/right_shoulder_pitch_link/right_shoulder_roll_link/right_shoulder_yaw_link/right_elbow_link/right_wrist_roll_link/right_wrist_pitch_link/right_wrist_yaw_link/right_rubber_hand>
             point3f physics:localPos0 = (0.0415, -0.003, 1.3877788e-17)
             point3f physics:localPos1 = (0, 0, 0)
             quatf physics:localRot0 = (1, 0, 0, 0)

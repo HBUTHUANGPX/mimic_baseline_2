@@ -195,7 +195,7 @@ class MotionLoader:
                     torch.full(
                         (num_frames, 1),
                         motion_group_index,
-                        dtype=torch.float32,
+                        dtype=torch.long,
                         device=device,
                     )
                 )
@@ -203,7 +203,7 @@ class MotionLoader:
                     torch.full(
                         (num_frames, 1),
                         self.num_motions + local_motion_id,
-                        dtype=torch.float32,
+                        dtype=torch.long,
                         device=device,
                     )
                 )
@@ -270,11 +270,14 @@ class MotionLoader:
             self.num_motions, 2, dtype=torch.long, device=device
         )
         start = 0
+        print("motion body dim:", self._body_pos_w.shape[1])
+        print("max body index:", int(torch.as_tensor(self._body_indexes).max().item()))
+        print("body indexes:", self._body_indexes)
+        assert int(torch.as_tensor(self._body_indexes).max().item()) < self._body_pos_w.shape[1]
         for motion_id, length in enumerate(self.motion_lengths):
             end = start + length
-            motion_indices[motion_id] = torch.tensor(
-                [start, end], dtype=torch.long, device=device
-            )
+            motion_indices[motion_id, 0] = start
+            motion_indices[motion_id, 1] = end
             start = end
         return motion_indices
 
