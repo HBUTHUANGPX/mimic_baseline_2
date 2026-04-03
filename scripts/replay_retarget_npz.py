@@ -198,7 +198,9 @@ def run_simulator(
         root_state = torch.from_numpy(
             build_root_state(root_pos, root_quat, env_origins)
         ).to(sim.device)
-        robot.write_root_state_to_sim(root_state)
+        # robot.write_root_state_to_sim(root_state)
+        robot.write_root_link_pose_to_sim_index(root_pose=root_state[:, :7])
+        robot.write_root_com_velocity_to_sim_index(root_velocity=root_state[:, 7:])
         # robot.write_root_pose_to_sim_index(root_pose=root_pose)
 
         joint_pos, joint_vel = prepare_joint_state_tensors(
@@ -246,6 +248,7 @@ def main():
 
         sim_cfg = sim_utils.SimulationCfg(device=args_cli.device)
         sim_cfg.dt = 1.0 / max(motion.fps, 1e-6)
+        print(f"Using simulation dt of {sim_cfg.dt:.6f} seconds based on motion fps of {motion.fps:.2f}.")
         sim = SimulationContext(sim_cfg)
         scene_cfg = scene_cfg_cls(
             num_envs=args_cli.num_envs, env_spacing=args_cli.env_spacing
