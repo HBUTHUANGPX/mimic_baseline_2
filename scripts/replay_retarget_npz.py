@@ -147,7 +147,6 @@ def _build_scene_cfg(robot_cfg):
     from isaaclab.scene import InteractiveSceneCfg
     from isaaclab.utils import configclass
     from isaaclab.utils.assets import ISAAC_NUCLEUS_DIR
-
     @configclass
     class ReplaySceneCfg(InteractiveSceneCfg):
         ground = AssetBaseCfg(
@@ -162,7 +161,7 @@ def _build_scene_cfg(robot_cfg):
             ),
         )
         robot: ArticulationCfg = robot_cfg.replace(prim_path="{ENV_REGEX_NS}/Robot")
-
+        
     return ReplaySceneCfg
 
 
@@ -194,7 +193,7 @@ def run_simulator(
             motion.robot_root_pos[frame_idx][None, :], scene.num_envs, axis=0
         )
         root_quat = np.repeat(
-            motion.robot_root_quat[frame_idx][None, :], scene.num_envs, axis=0
+            motion.robot_root_quat[frame_idx,[1,2,3,0]][None, :], scene.num_envs, axis=0
         )
         root_state = torch.from_numpy(
             build_root_state(root_pos, root_quat, env_origins)
@@ -211,7 +210,7 @@ def run_simulator(
             device=sim.device,
         )
         # robot.write_joint_state_to_sim(joint_pos, joint_vel)
-        robot.write_joint_position_to_sim_index(position=torch.rand_like(joint_pos) * 0.1)
+        robot.write_joint_position_to_sim_index(position=joint_pos)
         robot.write_joint_velocity_to_sim_index(velocity=joint_vel)
 
         scene.write_data_to_sim()

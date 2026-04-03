@@ -11,6 +11,22 @@
             "program": "scripts/rsl_rl/train.py",
             "console": "integratedTerminal",
             "args": "--task=GMT-Tracking-Flat-G1-v0 --num_envs=4096 --max_iterations=100 presets=newton"
+        },
+        {
+            "name": "soma-retargeter batch",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "soma-retargeter/app/bvh_to_csv_converter.py",
+            "console": "integratedTerminal",
+            "args": "--config soma-retargeter/assets/default_bvh_to_csv_converter_config.json --viewer null"
+        },
+        {
+            "name": "replay_retarget_npz",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "scripts/replay_retarget_npz.py",
+            "console": "integratedTerminal",
+            "args": "--motion_file soma-retargeter/assets/motions/test-export/Neutral_throw_ball_001__A057.npz   --robot g1 --viz kit"
         }
     ]
 }
