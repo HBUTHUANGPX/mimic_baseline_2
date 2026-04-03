@@ -193,7 +193,7 @@ def run_simulator(
             motion.robot_root_pos[frame_idx][None, :], scene.num_envs, axis=0
         )
         root_quat = np.repeat(
-            motion.robot_root_quat[frame_idx,[1,2,3,0]][None, :], scene.num_envs, axis=0
+            motion.robot_root_quat[frame_idx][None, :], scene.num_envs, axis=0
         )
         root_state = torch.from_numpy(
             build_root_state(root_pos, root_quat, env_origins)
