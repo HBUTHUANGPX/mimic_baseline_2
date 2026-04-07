@@ -6,6 +6,7 @@ import numpy as np
 import torch
 
 from newton_lab.app.common import build_env_from_task
+from newton_lab.rl import PlatformRunner
 from newton_lab.tasks import get_task_spec, import_tasks
 
 
@@ -93,3 +94,28 @@ groups:
     _, extras = env.reset()
 
     assert "reference_motion" in extras
+
+
+def test_velocity_runner_checkpoint_can_be_reloaded_for_play(tmp_path: Path) -> None:
+    import_tasks()
+    spec = get_task_spec("newton_lab.g1.velocity")
+    spec.agent_cfg.max_iterations = 1
+    spec.agent_cfg.experiment_name = "test_velocity_roundtrip"
+    env = spec.make_env()
+    env.build()
+    runner = PlatformRunner(env, spec.agent_cfg)
+    log_dir = tmp_path / "run"
+    log_dir.mkdir()
+    runner.dump_configs(log_dir)
+    checkpoint = runner.train(log_dir)
+
+    policy, play_env = runner.load_inference_components(checkpoint)
+    obs, _ = play_env.reset()
+    actions = policy(obs)
+    next_obs, rewards, dones, _ = play_env.step(actions)
+
+    assert checkpoint.exists()
+    assert actions.shape[0] == play_env.num_envs
+    assert next_obs["policy"].shape[0] == play_env.num_envs
+    assert rewards.shape == (play_env.num_envs,)
+    assert dones.shape == (play_env.num_envs,)

@@ -49,3 +49,17 @@ class PlatformRunner:
         vecenv = self.make_vecenv()
         runner = runner_cls(vecenv, asdict(self.agent_cfg), log_dir=str(log_dir), device=str(self.env.device))
         runner.learn(num_learning_iterations=self.agent_cfg.max_iterations, init_at_random_ep_len=True)
+        return self.find_latest_checkpoint(log_dir)
+
+    def find_latest_checkpoint(self, log_dir: Path) -> Path:
+        checkpoints = sorted(log_dir.glob("model_*.pt"))
+        if not checkpoints:
+            raise FileNotFoundError(f"No checkpoints found under {log_dir}")
+        return checkpoints[-1]
+
+    def load_inference_components(self, checkpoint_path: Path):
+        vecenv = self.make_vecenv()
+        runner = NewtonLabOnPolicyRunner(vecenv, asdict(self.agent_cfg), log_dir=None, device=str(self.env.device))
+        runner.load(str(checkpoint_path), map_location=str(self.env.device))
+        policy = runner.get_inference_policy(device=str(self.env.device))
+        return policy, vecenv
