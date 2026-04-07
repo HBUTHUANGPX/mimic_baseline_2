@@ -1,38 +1,73 @@
 from pathlib import Path
 import sys
+from types import SimpleNamespace
 
 import numpy as np
+import torch
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from scripts.replay_retarget_npz import (
+    build_replay_motion,
     build_root_state,
-    load_retarget_motion_npz,
     prepare_joint_state_tensors,
     prepare_robot_cfg,
 )
 
 
-def test_load_retarget_motion_npz_reads_new_schema(tmp_path: Path):
-    npz_path = tmp_path / "motion.npz"
-    np.savez(
-        npz_path,
-        fps=np.array(50, dtype=np.int32),
-        num_frames=np.array(2, dtype=np.int32),
-        robot_name=np.array("unitree_g1"),
-        robot_joint_names=np.array(["j0", "j1"]),
-        robot_root_pos=np.array([[0.0, 0.0, 0.5], [1.0, 0.0, 0.6]], dtype=np.float32),
-        robot_root_quat=np.array([[1.0, 0.0, 0.0, 0.0], [0.7, 0.1, 0.2, 0.6]], dtype=np.float32),
-        robot_joint_pos=np.array([[0.1, 0.2], [0.3, 0.4]], dtype=np.float32),
+def test_build_replay_motion_uses_loader_root_body_state():
+    loader = SimpleNamespace(
+        fps=50,
+        motion_lengths=[2],
+        robot_joint_names=["j0", "j1"],
+        robot_joint_pos=torch.tensor([[0.1, 0.2], [0.3, 0.4]], dtype=torch.float32),
+        body_pos_w=torch.tensor(
+            [
+                [[0.0, 0.0, 0.5], [9.0, 9.0, 9.0]],
+                [[1.0, 0.0, 0.6], [8.0, 8.0, 8.0]],
+            ],
+            dtype=torch.float32,
+        ),
+        body_quat_w=torch.tensor(
+            [
+                [[1.0, 0.0, 0.0, 0.0], [0.0, 0.0, 0.0, 1.0]],
+                [[0.7, 0.1, 0.2, 0.6], [0.0, 0.0, 1.0, 0.0]],
+            ],
+            dtype=torch.float32,
+        ),
     )
 
-    motion = load_retarget_motion_npz(npz_path)
+    motion = build_replay_motion(loader)
 
     assert motion.fps == 50.0
     assert motion.num_frames == 2
-    assert motion.robot_name == "unitree_g1"
     assert motion.robot_joint_names == ["j0", "j1"]
-    np.testing.assert_allclose(motion.robot_root_pos[1], np.array([1.0, 0.0, 0.6], dtype=np.float32))
+    np.testing.assert_allclose(
+        motion.robot_root_pos,
+        np.array([[0.0, 0.0, 0.5], [1.0, 0.0, 0.6]], dtype=np.float32),
+    )
+    np.testing.assert_allclose(
+        motion.robot_root_quat,
+        np.array([[1.0, 0.0, 0.0, 0.0], [0.7, 0.1, 0.2, 0.6]], dtype=np.float32),
+    )
+
+
+def test_build_replay_motion_rejects_multi_motion_loader():
+    loader = SimpleNamespace(
+        fps=50,
+        motion_lengths=[2, 3],
+        robot_joint_names=["j0"],
+        robot_joint_pos=torch.zeros((5, 1), dtype=torch.float32),
+        body_pos_w=torch.zeros((5, 1, 3), dtype=torch.float32),
+        body_quat_w=torch.zeros((5, 1, 4), dtype=torch.float32),
+    )
+
+    try:
+        build_replay_motion(loader)
+    except ValueError as exc:
+        assert "exactly one motion file" in str(exc)
+    else:
+        raise AssertionError("build_replay_motion should reject multi-motion loaders")
 
 
 def test_build_root_state_packs_pose_and_zero_velocity():

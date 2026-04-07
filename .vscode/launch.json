@@ -10,7 +10,7 @@
             "request": "launch",
             "program": "scripts/rsl_rl/train.py",
             "console": "integratedTerminal",
-            "args": "--task=GMT-Tracking-Flat-G1-v0 --num_envs=4096 --max_iterations=100 presets=newton"
+            "args": "--task=GMT-Tracking-Flat-G1-v0 --num_envs=128 --max_iterations=100 presets=newton"
         },
         {
             "name": "soma-retargeter batch",

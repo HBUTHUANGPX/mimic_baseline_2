@@ -52,26 +52,31 @@ def _build_parser() -> argparse.ArgumentParser:
 
 
 @dataclass
-class RetargetMotion:
+class ReplayMotion:
     fps: float
     num_frames: int
-    robot_name: str
     robot_joint_names: list[str]
     robot_root_pos: np.ndarray
     robot_root_quat: np.ndarray
     robot_joint_pos: np.ndarray
 
 
-def load_retarget_motion_npz(npz_path: str | Path) -> RetargetMotion:
-    payload = np.load(npz_path, allow_pickle=False)
-    return RetargetMotion(
-        fps=float(payload["fps"]),
-        num_frames=int(payload["num_frames"]),
-        robot_name=str(payload["robot_name"].tolist()),
-        robot_joint_names=payload["robot_joint_names"].tolist(),
-        robot_root_pos=np.asarray(payload["robot_root_pos"], dtype=np.float32),
-        robot_root_quat=np.asarray(payload["robot_root_quat"], dtype=np.float32),
-        robot_joint_pos=np.asarray(payload["robot_joint_pos"], dtype=np.float32),
+def build_replay_motion(loader) -> ReplayMotion:
+    """Adapt the shared MotionLoader output to the simple replay view this script consumes."""
+    if len(loader.motion_lengths) != 1:
+        raise ValueError(
+            "Replay expects exactly one motion file. "
+            f"Got {len(loader.motion_lengths)} motions in the loader."
+        )
+
+    num_frames = int(loader.motion_lengths[0])
+    return ReplayMotion(
+        fps=float(loader.fps),
+        num_frames=num_frames,
+        robot_joint_names=list(loader.robot_joint_names),
+        robot_root_pos=loader.body_pos_w[:num_frames, 0].detach().cpu().numpy(),
+        robot_root_quat=loader.body_quat_w[:num_frames, 0].detach().cpu().numpy(),
+        robot_joint_pos=loader.robot_joint_pos[:num_frames].detach().cpu().numpy(),
     )
 
 
@@ -168,12 +173,11 @@ def _build_scene_cfg(robot_cfg):
 def run_simulator(
     sim: "sim_utils.SimulationContext",
     scene: "InteractiveScene",
-    motion: RetargetMotion,
+    motion: ReplayMotion,
     camera_distance: float,
     simulation_app,
 ):
     import torch
-    import warp as wp
 
     robot: Articulation = scene["robot"]
     sim_dt = sim.get_physics_dt()
@@ -241,8 +245,18 @@ def main():
         import isaaclab.sim as sim_utils
         from isaaclab.scene import InteractiveScene
         from isaaclab.sim import SimulationContext
+        from GMT.tasks.tracking.mdp.motion_loader import MotionLoader
+        import torch
 
-        motion = load_retarget_motion_npz(args_cli.motion_file)
+        motion_file_group = {"replay_motion": args_cli.motion_file}
+        motion_loader = MotionLoader(
+            motion_file_group=motion_file_group,
+            body_indexes=[0],
+            history_frames=0,
+            future_frames=0,
+            device=args_cli.device,
+        )
+        motion = build_replay_motion(motion_loader)
         robot_cfg = _load_robot_cfg(args_cli.robot)
         scene_cfg_cls = _build_scene_cfg(robot_cfg)
 
