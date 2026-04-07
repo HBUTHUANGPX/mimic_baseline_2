@@ -4,11 +4,16 @@ from types import SimpleNamespace
 
 import numpy as np
 import torch
+from pxr import Gf, Vt
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from scripts.replay_retarget_npz import (
+    _build_soma_animation_arrays,
     _frame_root_pose,
+    _requires_articulation_robot,
+    _resolve_soma_reference_prim_path,
+    _resolve_soma_usd_path,
     _validate_single_motion_loader,
     build_root_state,
     prepare_joint_state_tensors,
@@ -62,6 +67,42 @@ def test_validate_single_motion_loader_rejects_multi_motion_loader():
         assert "exactly one motion file" in str(exc)
     else:
         raise AssertionError("_validate_single_motion_loader should reject multi-motion loaders")
+
+
+def test_requires_articulation_robot_excludes_soma():
+    assert _requires_articulation_robot("g1") is True
+    assert _requires_articulation_robot("Q1") is True
+    assert _requires_articulation_robot("soma") is False
+
+
+def test_resolve_soma_usd_path_points_to_existing_skeleton_asset():
+    usd_path = _resolve_soma_usd_path()
+
+    assert usd_path.name == "soma_base_skel_minimal.usd"
+    assert usd_path.is_file()
+
+
+def test_resolve_soma_reference_prim_path_targets_output_root():
+    assert _resolve_soma_reference_prim_path() == "/OUTPUT"
+
+
+def test_build_soma_animation_arrays_preserves_xyz_and_xyzw_order():
+    frame_local_transforms = torch.tensor(
+        [
+            [1.0, 2.0, 3.0, 0.1, 0.2, 0.3, 0.9],
+            [4.0, 5.0, 6.0, -0.1, -0.2, -0.3, 0.8],
+        ],
+        dtype=torch.float32,
+    )
+
+    translations, rotations = _build_soma_animation_arrays(frame_local_transforms)
+
+    assert isinstance(translations, Vt.Vec3fArray)
+    assert isinstance(rotations, Vt.QuatfArray)
+    assert translations[0] == Gf.Vec3f(1.0, 2.0, 3.0)
+    assert translations[1] == Gf.Vec3f(4.0, 5.0, 6.0)
+    assert rotations[0] == Gf.Quatf(0.9, 0.1, 0.2, 0.3)
+    assert rotations[1] == Gf.Quatf(0.8, -0.1, -0.2, -0.3)
 
 
 def test_build_root_state_packs_pose_and_zero_velocity():

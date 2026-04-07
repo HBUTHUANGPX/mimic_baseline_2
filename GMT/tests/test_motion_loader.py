@@ -56,6 +56,8 @@ def test_motion_loader_loads_joint_human_and_robot_timelines() -> None:
     assert len(loader.human_joint_names) == loader.human_joint_pos.shape[1]
 
     assert loader.robot_joint_pos.shape[0] == loader.human_joint_pos.shape[0]
+    assert loader.human_local_transforms.shape[0] == loader.human_joint_pos.shape[0]
+    assert loader.human_local_transforms.shape[-1] == 7
     assert loader.robot_joint_vel.shape == loader.robot_joint_pos.shape
     assert loader.robot_body_vel.shape == loader.robot_body_pos.shape
     assert loader.robot_body_angvel.shape[-1] == 3

@@ -27,6 +27,14 @@
             "program": "scripts/replay_retarget_npz.py",
             "console": "integratedTerminal",
             "args": "--motion_file soma-retargeter/assets/motions/test-export/Neutral_throw_ball_001__A057.npz   --robot g1 --viz kit"
+        },
+        {
+            "name": "replay_retarget_npz soma",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "scripts/replay_retarget_npz.py",
+            "console": "integratedTerminal",
+            "args": "--motion_file soma-retargeter/assets/motions/test-export/Neutral_throw_ball_001__A057.npz   --robot soma --viz newton"
         }
     ]
 }

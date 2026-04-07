@@ -34,7 +34,7 @@ def _build_parser() -> argparse.ArgumentParser:
         default="soma-retargeter/assets/motions/test-export/Neutral_throw_ball_001__A057.npz",
         help="Path to a retargeted motion npz file.",
     )
-    parser.add_argument("--robot", choices=["Q1", "g1", "soma"], default="g1")
+    parser.add_argument("--robot", choices=["Q1", "g1"], default="g1")
     parser.add_argument(
         "--num_envs", type=int, default=1, help="Number of replay environments."
     )
@@ -129,8 +129,6 @@ def _load_robot_cfg(robot_name: str):
         from GMT.robots.q1 import Q1_CYLINDER_CFG as robot_cfg
     elif robot_name == "g1":
         from GMT.robots.g1 import G1_CYLINDER_CFG as robot_cfg
-    elif robot_name == "soma":
-        from GMT.robots.soma import SOMA_CFG as robot_cfg
     else:
         raise ValueError(f"Unsupported robot name {robot_name}.")
     return prepare_robot_cfg(robot_cfg)
