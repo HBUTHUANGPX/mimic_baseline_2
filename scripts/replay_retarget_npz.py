@@ -9,7 +9,6 @@ from __future__ import annotations
 
 import argparse
 import copy
-from dataclasses import dataclass
 from pathlib import Path
 from typing import TYPE_CHECKING, Any
 
@@ -50,41 +49,29 @@ def _build_parser() -> argparse.ArgumentParser:
     )
     return parser
 
-
-@dataclass
-class ReplayMotion:
-    fps: float
-    num_frames: int
-    robot_joint_names: list[str]
-    robot_root_pos: np.ndarray
-    robot_root_quat: np.ndarray
-    robot_joint_pos: np.ndarray
-
-
-def build_replay_motion(loader) -> ReplayMotion:
-    """Adapt the shared MotionLoader output to the simple replay view this script consumes."""
+def _validate_single_motion_loader(loader) -> None:
+    """Replay only supports a single motion clip per invocation."""
     if len(loader.motion_lengths) != 1:
         raise ValueError(
             "Replay expects exactly one motion file. "
             f"Got {len(loader.motion_lengths)} motions in the loader."
         )
 
-    num_frames = int(loader.motion_lengths[0])
-    return ReplayMotion(
-        fps=float(loader.fps),
-        num_frames=num_frames,
-        robot_joint_names=list(loader.robot_joint_names),
-        robot_root_pos=loader.body_pos_w[:num_frames, 0].detach().cpu().numpy(),
-        robot_root_quat=loader.body_quat_w[:num_frames, 0].detach().cpu().numpy(),
-        robot_joint_pos=loader.robot_joint_pos[:num_frames].detach().cpu().numpy(),
-    )
+
+def _frame_root_pose(loader, frame_idx: int):
+    """The root link is stored as body 0 in the selected robot body tensors."""
+    root_pos = loader.body_pos_w[frame_idx, 0]
+    root_quat = loader.body_quat_w[frame_idx, 0]
+    return root_pos, root_quat
 
 
 def build_root_state(
-    root_pos: np.ndarray, root_quat: np.ndarray, env_origins: np.ndarray
-) -> np.ndarray:
+    root_pos, root_quat, env_origins
+):
+    import torch
+
     num_envs = root_pos.shape[0]
-    root_state = np.zeros((num_envs, 13), dtype=np.float32)
+    root_state = torch.zeros((num_envs, 13), dtype=torch.float32, device=root_pos.device)
     root_state[:, :3] = root_pos + env_origins
     root_state[:, 3:7] = root_quat
     return root_state
@@ -130,10 +117,9 @@ def prepare_joint_state_tensors(
     if joint_vel.shape[0] != num_envs:
         joint_vel = joint_vel.repeat(num_envs, 1)
     joint_vel.zero_()
+    frame_joint_pos_tensor = frame_joint_pos.to(device=device, dtype=torch.float32)
     joint_pos[:, joint_indices] = (
-        torch.as_tensor(frame_joint_pos, dtype=torch.float32, device=device)
-        .unsqueeze(0)
-        .repeat(num_envs, 1)
+        frame_joint_pos_tensor.unsqueeze(0).repeat(num_envs, 1)
     )
     return joint_pos, joint_vel
 
@@ -173,35 +159,34 @@ def _build_scene_cfg(robot_cfg):
 def run_simulator(
     sim: "sim_utils.SimulationContext",
     scene: "InteractiveScene",
-    motion: ReplayMotion,
+    motion_loader,
     camera_distance: float,
     simulation_app,
 ):
     import torch
 
+    _validate_single_motion_loader(motion_loader)
+
     robot: Articulation = scene["robot"]
     sim_dt = sim.get_physics_dt()
+    num_frames = int(motion_loader.motion_lengths[0])
 
-    joint_indices = robot.find_joints(motion.robot_joint_names, preserve_order=True)[0]
-    if len(joint_indices) != len(motion.robot_joint_names):
+    joint_indices = robot.find_joints(
+        motion_loader.robot_joint_names, preserve_order=True
+    )[0]
+    if len(joint_indices) != len(motion_loader.robot_joint_names):
         raise RuntimeError("Failed to match motion joint names to robot joints.")
 
-    env_origins = scene.env_origins.cpu().numpy().astype(np.float32)
-    robot_joint_pos = torch.from_numpy(motion.robot_joint_pos).to(sim.device)
+    env_origins = scene.env_origins.to(sim.device)
     time_step = 0
 
     while simulation_app.is_running():
-        frame_idx = time_step % motion.num_frames
+        frame_idx = time_step % num_frames
 
-        root_pos = np.repeat(
-            motion.robot_root_pos[frame_idx][None, :], scene.num_envs, axis=0
-        )
-        root_quat = np.repeat(
-            motion.robot_root_quat[frame_idx][None, :], scene.num_envs, axis=0
-        )
-        root_state = torch.from_numpy(
-            build_root_state(root_pos, root_quat, env_origins)
-        ).to(sim.device)
+        frame_root_pos, frame_root_quat = _frame_root_pose(motion_loader, frame_idx)
+        root_pos = frame_root_pos.unsqueeze(0).repeat(scene.num_envs, 1).to(sim.device)
+        root_quat = frame_root_quat.unsqueeze(0).repeat(scene.num_envs, 1).to(sim.device)
+        root_state = build_root_state(root_pos, root_quat, env_origins)
         # robot.write_root_state_to_sim(root_state)
         robot.write_root_link_pose_to_sim_index(root_pose=root_state[:, :7])
         robot.write_root_com_velocity_to_sim_index(root_velocity=root_state[:, 7:])
@@ -210,7 +195,7 @@ def run_simulator(
         joint_pos, joint_vel = prepare_joint_state_tensors(
             default_joint_pos=robot.data.default_joint_pos,
             default_joint_vel=robot.data.default_joint_vel,
-            frame_joint_pos=robot_joint_pos[frame_idx],
+            frame_joint_pos=motion_loader.robot_joint_pos[frame_idx],
             joint_indices=joint_indices,
             num_envs=scene.num_envs,
             device=sim.device,
@@ -256,13 +241,14 @@ def main():
             future_frames=0,
             device=args_cli.device,
         )
-        motion = build_replay_motion(motion_loader)
         robot_cfg = _load_robot_cfg(args_cli.robot)
         scene_cfg_cls = _build_scene_cfg(robot_cfg)
 
         sim_cfg = sim_utils.SimulationCfg(device=args_cli.device)
-        sim_cfg.dt = 1.0 / max(motion.fps, 1e-6)
-        print(f"Using simulation dt of {sim_cfg.dt:.6f} seconds based on motion fps of {motion.fps:.2f}.")
+        sim_cfg.dt = 1.0 / max(float(motion_loader.fps), 1e-6)
+        print(
+            f"Using simulation dt of {sim_cfg.dt:.6f} seconds based on motion fps of {float(motion_loader.fps):.2f}."
+        )
         sim = SimulationContext(sim_cfg)
         scene_cfg = scene_cfg_cls(
             num_envs=args_cli.num_envs, env_spacing=args_cli.env_spacing
@@ -272,7 +258,7 @@ def main():
         run_simulator(
             sim=sim,
             scene=scene,
-            motion=motion,
+            motion_loader=motion_loader,
             camera_distance=args_cli.camera_distance,
             simulation_app=simulation_app,
         )

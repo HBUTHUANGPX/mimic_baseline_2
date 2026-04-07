@@ -8,14 +8,15 @@ import torch
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from scripts.replay_retarget_npz import (
-    build_replay_motion,
+    _frame_root_pose,
+    _validate_single_motion_loader,
     build_root_state,
     prepare_joint_state_tensors,
     prepare_robot_cfg,
 )
 
 
-def test_build_replay_motion_uses_loader_root_body_state():
+def test_frame_root_pose_uses_loader_root_body_state():
     loader = SimpleNamespace(
         fps=50,
         motion_lengths=[2],
@@ -37,22 +38,15 @@ def test_build_replay_motion_uses_loader_root_body_state():
         ),
     )
 
-    motion = build_replay_motion(loader)
+    root_pos, root_quat = _frame_root_pose(loader, 1)
 
-    assert motion.fps == 50.0
-    assert motion.num_frames == 2
-    assert motion.robot_joint_names == ["j0", "j1"]
-    np.testing.assert_allclose(
-        motion.robot_root_pos,
-        np.array([[0.0, 0.0, 0.5], [1.0, 0.0, 0.6]], dtype=np.float32),
-    )
-    np.testing.assert_allclose(
-        motion.robot_root_quat,
-        np.array([[1.0, 0.0, 0.0, 0.0], [0.7, 0.1, 0.2, 0.6]], dtype=np.float32),
-    )
+    assert isinstance(root_pos, torch.Tensor)
+    assert isinstance(root_quat, torch.Tensor)
+    torch.testing.assert_close(root_pos, torch.tensor([1.0, 0.0, 0.6], dtype=torch.float32))
+    torch.testing.assert_close(root_quat, torch.tensor([0.7, 0.1, 0.2, 0.6], dtype=torch.float32))
 
 
-def test_build_replay_motion_rejects_multi_motion_loader():
+def test_validate_single_motion_loader_rejects_multi_motion_loader():
     loader = SimpleNamespace(
         fps=50,
         motion_lengths=[2, 3],
@@ -63,23 +57,28 @@ def test_build_replay_motion_rejects_multi_motion_loader():
     )
 
     try:
-        build_replay_motion(loader)
+        _validate_single_motion_loader(loader)
     except ValueError as exc:
         assert "exactly one motion file" in str(exc)
     else:
-        raise AssertionError("build_replay_motion should reject multi-motion loaders")
+        raise AssertionError("_validate_single_motion_loader should reject multi-motion loaders")
 
 
 def test_build_root_state_packs_pose_and_zero_velocity():
-    root_pos = np.array([[0.0, 0.0, 0.5]], dtype=np.float32)
-    root_quat = np.array([[1.0, 0.0, 0.0, 0.0]], dtype=np.float32)
-    env_origins = np.array([[2.0, 3.0, 0.0]], dtype=np.float32)
+    root_pos = torch.tensor([[0.0, 0.0, 0.5]], dtype=torch.float32)
+    root_quat = torch.tensor([[1.0, 0.0, 0.0, 0.0]], dtype=torch.float32)
+    env_origins = torch.tensor([[2.0, 3.0, 0.0]], dtype=torch.float32)
 
     root_state = build_root_state(root_pos, root_quat, env_origins)
 
-    np.testing.assert_allclose(root_state[0, :3], np.array([2.0, 3.0, 0.5], dtype=np.float32))
-    np.testing.assert_allclose(root_state[0, 3:7], np.array([1.0, 0.0, 0.0, 0.0], dtype=np.float32))
-    np.testing.assert_allclose(root_state[0, 7:], np.zeros(6, dtype=np.float32))
+    assert isinstance(root_state, torch.Tensor)
+    torch.testing.assert_close(
+        root_state[0, :3], torch.tensor([2.0, 3.0, 0.5], dtype=torch.float32)
+    )
+    torch.testing.assert_close(
+        root_state[0, 3:7], torch.tensor([1.0, 0.0, 0.0, 0.0], dtype=torch.float32)
+    )
+    torch.testing.assert_close(root_state[0, 7:], torch.zeros(6, dtype=torch.float32))
 
 
 def test_prepare_robot_cfg_disables_contact_sensors_without_mutating_input():
@@ -103,11 +102,9 @@ def test_prepare_robot_cfg_disables_contact_sensors_without_mutating_input():
     assert prepared.spawn.usd_path.endswith("/assets/demo.usd")
 
 
-def test_prepare_joint_state_tensors_accepts_numpy_defaults():
-    import torch
-
-    default_pos = np.array([[1.0, 2.0, 3.0]], dtype=np.float32)
-    default_vel = np.array([[0.0, 0.0, 0.0]], dtype=np.float32)
+def test_prepare_joint_state_tensors_uses_tensor_inputs():
+    default_pos = torch.tensor([[1.0, 2.0, 3.0]], dtype=torch.float32)
+    default_vel = torch.tensor([[0.0, 0.0, 0.0]], dtype=torch.float32)
     frame_joint_pos = torch.tensor([0.1, 0.2], dtype=torch.float32)
     joint_indices = [1, 2]
 
@@ -122,5 +119,36 @@ def test_prepare_joint_state_tensors_accepts_numpy_defaults():
 
     assert isinstance(joint_pos, torch.Tensor)
     assert isinstance(joint_vel, torch.Tensor)
-    np.testing.assert_allclose(joint_pos.numpy(), np.array([[1.0, 0.1, 0.2]], dtype=np.float32))
-    np.testing.assert_allclose(joint_vel.numpy(), np.zeros((1, 3), dtype=np.float32))
+    torch.testing.assert_close(
+        joint_pos, torch.tensor([[1.0, 0.1, 0.2]], dtype=torch.float32)
+    )
+    torch.testing.assert_close(joint_vel, torch.zeros((1, 3), dtype=torch.float32))
+
+
+def test_prepare_joint_state_tensors_does_not_rewrap_tensor_frame_joint_pos(monkeypatch):
+    default_pos = np.array([[1.0, 2.0, 3.0]], dtype=np.float32)
+    default_vel = np.array([[0.0, 0.0, 0.0]], dtype=np.float32)
+    frame_joint_pos = torch.tensor([0.1, 0.2], dtype=torch.float32)
+    joint_indices = [1, 2]
+    original_as_tensor = torch.as_tensor
+
+    def guarded_as_tensor(value, *args, **kwargs):
+        if value is frame_joint_pos:
+            raise AssertionError("frame_joint_pos should not be passed through torch.as_tensor")
+        return original_as_tensor(value, *args, **kwargs)
+
+    monkeypatch.setattr(torch, "as_tensor", guarded_as_tensor)
+
+    joint_pos, joint_vel = prepare_joint_state_tensors(
+        default_joint_pos=default_pos,
+        default_joint_vel=default_vel,
+        frame_joint_pos=frame_joint_pos,
+        joint_indices=joint_indices,
+        num_envs=1,
+        device="cpu",
+    )
+
+    torch.testing.assert_close(
+        joint_pos, torch.tensor([[1.0, 0.1, 0.2]], dtype=torch.float32)
+    )
+    torch.testing.assert_close(joint_vel, torch.zeros((1, 3), dtype=torch.float32))
